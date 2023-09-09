@@ -18,9 +18,34 @@ const Home = () => {
     const [visible4, setvisible4] = useState(false)
     const [visible5, setvisible5] = useState(false)
     const [visible6, setvisible6] = useState(false)
+    const [focused, setfocused] = useState(false)
+    const [inputValue, setInputValue] = useState('')
+    const [focused2, setfocused2] = useState(false)
+    const [inputValue2, setInputValue2] = useState('')
+
+    const handlefocus = () => {
+        setfocused(!focused)
+    }
+    const handleblur = () => {
+        setfocused(!focused)
+        setInputValue('')
+    }
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+    }
+    const handlefocus2 = () => {
+        setfocused2(!focused2)
+    }
+    const handleblur2 = () => {
+        setfocused2(!focused2)
+        setInputValue2('')
+    }
+    const handleChange2 = (e) => {
+        setInputValue2(e.target.value);
+    }
 
     const changedropdown = (e) => {
-        setlanguage(e.target.value)
+        setlanguage(e.target.value) 
     }
 
     const handleplus1 = () => {
@@ -100,8 +125,12 @@ const Home = () => {
                         <h4 className="sm:text-[25px] text-[18px] m-[20px] ">Endless entertainment starts at just ₹ 149. Cancel anytime.</h4>
                         <p className="sm:text-[21px] text-[15px] m-[20px] ">Ready to watch? Enter your email to create or restart your membership.   </p>
                         <div className="max-w-[600px] sm:px-[10px] px-[40px] mx-auto mt-[30px] ">
-                            <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] ">
-                                <input className="border-[1px] pl-[20px] h-[50px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md " type="email" placeholder="Email address" />
+                            <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] items-center">
+                                <div className="relative">
+                                    <input onChange={handleChange} value={inputValue} onFocus={handlefocus} onBlur={handleblur} className="sm:w-[400px] w-[250px] border-[1px] pl-[20px] h-[60px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md" type="email" />
+                                    <label className={`text-[#ccc] absolute  sm:left-[24px] left-[36px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus}>Email address</label>
+                                </div>
+
                                 <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 ml-[60px] sm:ml-[0px]">Get Started > </button>
                             </form>
                         </div>
@@ -242,8 +271,12 @@ const Home = () => {
                     </div>
                     <p className="sm:text-[21px] text-[15px] m-[20px] text-center text-white ">Ready to watch? Enter your email to create or restart your membership.   </p>
                     <div className="max-w-[600px] sm:px-[10px] px-[40px] mx-auto mt-[30px] ">
-                        <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] ">
-                            <input className="border-[1px] pl-[20px] h-[50px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md " type="email" placeholder="Email address" />
+                        <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] items-center">
+                            <div className="relative">
+                                <input onChange={handleChange2} value={inputValue2} onFocus={handlefocus2} onBlur={handleblur2} className="sm:w-[400px] text-white w-[250px] border-[1px] pl-[20px] h-[60px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md" type="email" />
+                                <label className={`text-[#ccc] absolute  sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused2 ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus2}>Email address</label>
+                            </div>
+
                             <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 ml-[45px] sm:ml-[0px]">Get Started > </button>
                         </form>
                     </div>

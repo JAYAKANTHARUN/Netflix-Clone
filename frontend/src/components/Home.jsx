@@ -129,12 +129,12 @@ const Home = () => {
                     <div className="grid sm:grid-cols-2 grid-cols-1 text-center sm:text-left items-center">
                         <figure className="relative sm:order-1 order-2 ">
                             <img src={Image21} alt="" />
-                            <div className="sm:w-[60%] w-[90%] absolute sm:left-[20%] left-[5%] border-[1px] border-[#ccc] bottom-[30px] grid grid-cols-[70%_auto] bg-black items-center rounded-[10px]">
-                                <div className="grid grid-cols-[25%_auto] p-[10px] gap-[10px] items-center ">
-                                    <img className="" src={Image22} alt="" />
-                                    <div className="text-white">
+                            <div className="sm:w-[60%] w-[80%] absolute sm:left-[20%] left-[10%] border-[1px] border-[#ccc] sm:bottom-[30px] bottom-[5px] grid grid-cols-[70%_auto] bg-black items-center rounded-[10px] ">
+                                <div className="grid grid-cols-[25%_auto] sm:p-[10px] p-[5px] gap-[10px] items-center ">
+                                    <img className="sm:h-auto h-12 pl-[5px] sm:pl-[0px] " src={Image22} alt="" />
+                                    <div className="text-white text-left">
                                         <h3 className="font-poppins font-extrabold text-[14px] ">Stranger Things</h3>
-                                        <p className=" text-blue-700">Downloading...</p>
+                                        <p className=" text-blue-700 sm:text-[14px] text-[13px]">Downloading...</p>
                                     </div>
                                 </div>
                                 <div>

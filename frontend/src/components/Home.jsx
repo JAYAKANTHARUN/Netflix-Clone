@@ -117,7 +117,7 @@ const Home = () => {
                         </div>
                         <figure className="relative">
                             <video className="absolute w-[80%] bottom-[20%] left-[10%] -z-1 ">
-                                <source src={Video1} />
+                                <source src="{Video1}" type="video/m4v" />
                             </video>
                             <img className="relative" src={Image1} alt="error" />
                         </figure>
@@ -129,7 +129,7 @@ const Home = () => {
                     <div className="grid sm:grid-cols-2 grid-cols-1 text-center sm:text-left items-center">
                         <figure className="relative sm:order-1 order-2 ">
                             <img src={Image21} alt="" />
-                            <div className="sm:w-[60%] w-[80%] absolute sm:left-[20%] left-[10%] border-[1px] border-[#ccc] sm:bottom-[30px] bottom-[5px] grid grid-cols-[70%_auto] bg-black items-center rounded-[10px] ">
+                            <div className="sm:w-[60%] w-[80%] absolute sm:left-[20%] left-[10%] border-[1px] border-[#ccc] sm:bottom-[30px] bottom-[25px] grid grid-cols-[70%_auto] bg-black items-center rounded-[10px] ">
                                 <div className="grid grid-cols-[25%_auto] sm:p-[10px] p-[5px] gap-[10px] items-center ">
                                     <img className="sm:h-auto h-12 pl-[5px] sm:pl-[0px] " src={Image22} alt="" />
                                     <div className="text-white text-left">

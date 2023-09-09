@@ -146,7 +146,7 @@ const Home = () => {
                         </div>
                         <figure className="relative">
                             <video className="absolute w-[80%] bottom-[20%] left-[10%] -z-1 ">
-                                <source src="{Video1}" />
+                                <source src={Video1} />
                             </video>
                             <img className="relative" src={Image1} alt="error" />
                         </figure>

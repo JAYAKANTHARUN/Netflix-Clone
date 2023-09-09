@@ -10,8 +10,9 @@ const Home = () => {
     }
 
     return (
+        <div>
         <section className="w-[100%] h-[90vh] bg-[url('images/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg')] bg-center bg-cover">
-            <div className="w-[100%] h-[90vh] bg-gradient-to-t from-black via-transparent to-black">
+            <div className="w-[100%] h-[90vh] bg-[rgba(0,0,0,0.6)]">
                 <header className="max-w-[1170px] mx-auto ">
                     <div className="grid sm:grid-cols-2 grid-cols-[30%_auto] px-[10px] items-center">
                         <figure>
@@ -30,9 +31,24 @@ const Home = () => {
                             </button>
                         </div>
                     </div>
-                </header>
+                </header> 
+                <div className="max-w-[1170px] mx-auto sm:py-[150px] py-[50px] text-center text-white ">
+                    <h1 className="sm:text-[50px] text-[35px] font-extrabold ">Laughter. Tears. Thrills. Find it all on Netflix.</h1>
+                    <h4 className="sm:text-[25px] text-[18px] m-[20px] ">Endless entertainment starts at just ₹ 149. Cancel anytime.</h4>
+                    <p className="sm:text-[21px] text-[15px] m-[20px] ">Ready to watch? Enter your email to create or restart your membership.   </p>
+                    <div className="max-w-[600px] sm:px-[10px] px-[40px] mx-auto mt-[30px] ">
+                        <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] ">
+                            <input className="border-[1px] pl-[20px] h-[50px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md " type="email" placeholder="Email address" />
+                            <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 ml-[60px] sm:ml-[0px]">Get Started > </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
+        <section>
+
+        </section>
+        </div>
     )
 }
 

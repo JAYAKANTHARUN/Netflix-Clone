@@ -12,9 +12,64 @@ import Image4 from '../images/AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTt
 const Home = () => {
 
     const [language, setlanguage] = useState('english')
+    const [visible1,setvisible1] = useState(false)
+    const [visible2,setvisible2] = useState(false)
+    const [visible3,setvisible3] = useState(false)
+    const [visible4,setvisible4] = useState(false)
+    const [visible5,setvisible5] = useState(false)
+    const [visible6,setvisible6] = useState(false)
 
     const changedropdown = (e) => {
         setlanguage(e.target.value)
+    }
+
+    const handleplus1 = () => {
+        setvisible1(!visible1)
+        setvisible2(false)
+        setvisible4(false)
+        setvisible5(false)
+        setvisible3(false)
+        setvisible6(false)
+    }
+    const handleplus2 = () => {
+        setvisible2(!visible2)
+        setvisible1(false)
+        setvisible4(false)
+        setvisible5(false)
+        setvisible3(false)
+        setvisible6(false)
+    }
+    const handleplus3 = () => {
+        setvisible3(!visible3)
+        setvisible2(false)
+        setvisible4(false)
+        setvisible5(false)
+        setvisible1(false)
+        setvisible6(false)
+    }
+    const handleplus4 = () => {
+        setvisible4(!visible4)
+        setvisible2(false)
+        setvisible1(false)
+        setvisible5(false)
+        setvisible3(false)
+        setvisible6(false)
+    }
+    const handleplus5 = () => {
+        setvisible5(!visible5)
+        setvisible2(false)
+        setvisible4(false)
+        setvisible1(false)
+        setvisible3(false)
+        setvisible6(false)
+    }
+    const handleplus6 = () => {
+        setvisible6(!visible6)
+        setvisible2(false)
+        setvisible4(false)
+        setvisible5(false)
+        setvisible3(false)
+        setvisible1(false)
     }
 
     return (
@@ -119,6 +174,70 @@ const Home = () => {
                         <div className="text-white sm:order-2 order-1 ">
                             <h2 className="sm:text-[50px] text-[33px] font-bold sm:leading-[65px] leading-[40px]  ">Create profiles for kids</h2>
                             <p className="sm:text-[25px] text-[19px] pt-[20px] ml-3 mr-3 sm:ml-0 sm:mr-0 ">Send children on adventures with their favourite characters in a space made just for them—free with your membership.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="w-[100%] bg-black border-t-[#3e3e3e] border-t-[8px] sm:py-[70px] py-[50px]">
+                <div className="max-w-[1170px] mx-auto px-[15px] ">
+                    <h2 className="sm:text-[50px] text-[30px] font-bold text-white text-center">Frequently Asked Questions</h2>
+                    <div className="py-[30px]  ">
+                        <div className="bg-[#2d2d2d] mb-[10px]">
+                            <div className="p-[20px] text-white sm:text-[25px] text-[17px] font-poppins font-bold relative border-b-2 border-b-black hover:bg-[rgb(78,78,78)]  transition duration-300 ease-in-out cursor-pointer"  onClick={handleplus1}>
+                                <h3>What is Netflix?</h3><span className="absolute right-[30px] top-[20px]">{visible1 ? 'x' : '+'}</span>
+                            </div>
+
+                            <div className={`text-white sm:text-[20px] text-[15px] font-poppins overflow-hidden transition-all duration-500 ease-in-out ${visible1 ? 'scale-100 h-auto p-[20px] origin-top' : 'scale-y-0 h-[0px] origin-top'}`}>
+                                <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices.</p><br />
+                                <p>You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!</p>
+                            </div>
+                        </div>
+                        <div className="bg-[#2d2d2d] mb-[10px]">
+                            <div className="p-[20px] text-white sm:text-[25px] text-[17px] font-poppins font-bold relative border-b-2 border-b-black hover:bg-[rgb(78,78,78)]  transition duration-300 ease-in-out cursor-pointer"  onClick={handleplus2}>
+                                <h3>How much does Netflix cost?</h3><span className="absolute right-[30px] top-[20px]">{visible2 ? 'x' : '+'}</span>
+                            </div>
+
+                            <div className={`text-white sm:text-[20px] text-[15px] font-poppins overflow-hidden transition-all duration-500 ease-in-out ${visible2 ? 'scale-100 h-auto p-[20px] origin-top' : 'scale-y-0 h-[0px] origin-top'}`}>
+                                <p>Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₹ 149 to ₹ 649 a month. No extra costs, no contracts.</p>
+                            </div>
+                        </div>
+                        <div className="bg-[#2d2d2d] mb-[10px]">
+                            <div className="p-[20px] text-white sm:text-[25px] text-[17px] font-poppins font-bold relative border-b-2 border-b-black hover:bg-[rgb(78,78,78)]  transition duration-300 ease-in-out cursor-pointer"  onClick={handleplus3}>
+                                <h3>Where can I watch?</h3><span className="absolute right-[30px] top-[20px]">{visible3 ? 'x' : '+'}</span>
+                            </div>
+
+                            <div className={`text-white sm:text-[20px] text-[15px] font-poppins overflow-hidden transition-all duration-500 ease-in-out ${visible3 ? 'scale-100 h-auto p-[20px] origin-top' : 'scale-y-0 h-[0px] origin-top'}`}>
+                                <p>Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.</p><br />
+                                <p>You can also download your favourite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.</p>
+                            </div>
+                        </div>
+                        <div className="bg-[#2d2d2d] mb-[10px]">
+                            <div className="p-[20px] text-white sm:text-[25px] text-[17px] font-poppins font-bold relative border-b-2 border-b-black hover:bg-[rgb(78,78,78)]  transition duration-300 ease-in-out cursor-pointer"  onClick={handleplus4}>
+                                <h3>How do I cancel?</h3><span className="absolute right-[30px] top-[20px]">{visible4 ? 'x' : '+'}</span>
+                            </div>
+
+                            <div className={`text-white sm:text-[20px] text-[15px] font-poppins overflow-hidden transition-all duration-500 ease-in-out ${visible4 ? 'scale-100 h-auto p-[20px] origin-top' : 'scale-y-0 h-[0px] origin-top'}`}>
+                                <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.</p>
+                            </div>
+                        </div>
+                        <div className="bg-[#2d2d2d] mb-[10px]">
+                            <div className="p-[20px] text-white sm:text-[25px] text-[17px] font-poppins font-bold relative border-b-2 border-b-black hover:bg-[rgb(78,78,78)]  transition duration-300 ease-in-out cursor-pointer"  onClick={handleplus5}>
+                                <h3>What can I watch on Netflix?</h3><span className="absolute right-[30px] top-[20px]">{visible5 ? 'x' : '+'}</span>
+                            </div>
+
+                            <div className={`text-white sm:text-[20px] text-[15px] font-poppins overflow-hidden transition-all duration-500 ease-in-out ${visible5 ? 'scale-100 h-auto p-[20px] origin-top' : 'scale-y-0 h-[0px] origin-top'}`}>
+                                <p>Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.</p>
+                            </div>
+                        </div>
+                        <div className="bg-[#2d2d2d] mb-[10px]">
+                            <div className="p-[20px] text-white sm:text-[25px] text-[17px] font-poppins font-bold relative border-b-2 border-b-black hover:bg-[rgb(78,78,78)]  transition duration-300 ease-in-out cursor-pointer" onClick={handleplus6}>
+                                <h3>Is Netflix good for kids?</h3><span className="absolute right-[30px] top-[20px]">{visible6 ? 'x' : '+'}</span>
+                            </div>
+
+                            <div className={`text-white sm:text-[20px] text-[15px] font-poppins overflow-hidden transition-all duration-500 ease-in-out ${visible6 ? 'scale-100 h-auto p-[20px] origin-top' : 'scale-y-0 h-[0px] origin-top'}`}>
+                                <p>The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and films in their own space.</p><br />
+                                <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

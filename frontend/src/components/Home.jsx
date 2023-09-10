@@ -45,7 +45,7 @@ const Home = () => {
     }
 
     const changedropdown = (e) => {
-        setlanguage(e.target.value) 
+        setlanguage(e.target.value)
     }
 
     const handleplus1 = () => {
@@ -125,13 +125,14 @@ const Home = () => {
                         <h4 className="sm:text-[25px] text-[18px] m-[20px] ">Endless entertainment starts at just ₹ 149. Cancel anytime.</h4>
                         <p className="sm:text-[21px] text-[15px] m-[20px] ">Ready to watch? Enter your email to create or restart your membership.   </p>
                         <div className="max-w-[600px] sm:px-[10px] px-[40px] mx-auto mt-[30px] ">
-                            <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] items-center">
-                                <div className="relative">
+                            <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] justify-center items-center">
+                                <div className="relative sm:max-w-[400px] max-w-[250px] mx-auto">
                                     <input onChange={handleChange} value={inputValue} onFocus={handlefocus} onBlur={handleblur} className="sm:w-[400px] w-[250px] border-[1px] pl-[20px] h-[60px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md" type="email" />
-                                    <label className={`text-[#ccc] absolute  sm:left-[24px] left-[36px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus}>Email address</label>
+                                    <label className={`text-[#ccc] absolute sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus}>Email address</label>
                                 </div>
-
-                                <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 ml-[60px] sm:ml-[0px]">Get Started > </button>
+                                <div>
+                                    <button className=" font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]  ">Get Started > </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -145,7 +146,7 @@ const Home = () => {
                             <p className="sm:text-[25px] text-[19px] pt-[20px] ml-3 mr-3 sm:ml-0 sm:mr-0 ">Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
                         </div>
                         <figure className="relative">
-                            <video className="absolute w-[80%] bottom-[20%] left-[10%] -z-1 ">
+                            <video className="absolute w-[80%] bottom-[20%] left-[10%] -z-1 " autoPlay playsInline muted loop >
                                 <source src={Video1} />
                             </video>
                             <img className="relative" src={Image1} alt="error" />
@@ -186,7 +187,7 @@ const Home = () => {
                             <p className="sm:text-[25px] text-[19px] pt-[20px] ml-3 mr-3 sm:ml-0 sm:mr-0 ">Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
                         </div>
                         <figure className="relative">
-                            <video className="absolute w-[61%] bottom-[46%] left-[19%] -z-1 ">
+                            <video className="absolute w-[61%] bottom-[46%] left-[19%] -z-1 " autoPlay playsInline muted loop>
                                 <source src={Video3} />
                             </video>
                             <img className="relative" src={Image3} alt="error" />
@@ -270,37 +271,38 @@ const Home = () => {
                         </div>
                     </div>
                     <p className="sm:text-[21px] text-[15px] m-[20px] text-center text-white ">Ready to watch? Enter your email to create or restart your membership.   </p>
-                    <div className="max-w-[600px] sm:px-[10px] px-[40px] mx-auto mt-[30px] ">
-                        <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] items-center">
-                            <div className="relative">
+                    <div className="max-w-[600px] sm:px-[10px] px-[40px] mx-auto mt-[30px] text-center ">
+                        <form action="" className="grid sm:grid-cols-[70%_auto] grid-cols-1 gap-[10px] justify-center items-center">
+                            <div className="relative sm:max-w-[400px] max-w-[250px] mx-auto">
                                 <input onChange={handleChange2} value={inputValue2} onFocus={handlefocus2} onBlur={handleblur2} className="sm:w-[400px] text-white w-[250px] border-[1px] pl-[20px] h-[60px] border-[#ccc] bg-[rgba(0,0,0,0.5)] rounded-md" type="email" />
                                 <label className={`text-[#ccc] absolute  sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused2 ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus2}>Email address</label>
                             </div>
-
-                            <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 ml-[45px] sm:ml-[0px]">Get Started > </button>
+                            <div>
+                                <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]">Get Started > </button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </section>
             <section className="w-[100%] bg-black border-t-[#3e3e3e] border-t-[8px] sm:py-[70px] py-[50px]">
                 <div className="text-[rgba(255,255,255,0.7)] max-w-[1170px] mx-auto px-[10px] sm:ml-[180px] ml-[15px]">
-                    <h3 className="font-poppins sm:text-[16px]">Questions? Call <span className="underline">000-800-919-1694</span></h3>
+                    <h3 className="font-poppins sm:text-[16px]">Questions? Call <span className="underline cursor-pointer">000-800-919-1694</span></h3>
                     <div className="text-[15px] font-poppins underline py-[30px] grid sm:grid-cols-3 sm:grid-rows-5 grid-cols-1">
-                        <p className="sm:py-2 py-1">FAQ</p>
-                        <p className="sm:py-2 py-1">Help Centre</p>
-                        <p className="sm:py-2 py-1">Account</p>
-                        <p className="sm:py-2 py-1">Media Centre</p>
-                        <p className="sm:py-2 py-1">Investor Relations</p>
-                        <p className="sm:py-2 py-1">Jobs</p>
-                        <p className="sm:py-2 py-1">Ways to Watch</p>
-                        <p className="sm:py-2 py-1">Terms of Use</p>
-                        <p className="sm:py-2 py-1">Privacy</p>
-                        <p className="sm:py-2 py-1">Cookie Preferences</p>
-                        <p className="sm:py-2 py-1">Corporate Information</p>
-                        <p className="sm:py-2 py-1">Contact Us</p>
-                        <p className="sm:py-2 py-1">Speed Test</p>
-                        <p className="sm:py-2 py-1">Legal Notices</p>
-                        <p className="sm:py-2 py-1">Only on Netflix</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">FAQ</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Help Centre</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Account</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Media Centre</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Investor Relations</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Jobs</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Ways to Watch</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Terms of Use</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Privacy</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Cookie Preferences</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Corporate Information</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Contact Us</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Speed Test</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Legal Notices</p>
+                        <p className="sm:my-2 my-1 cursor-pointer">Only on Netflix</p>
                     </div>
                     <div className="relative">
                         <svg className="absolute text-white top-[9px] left-[7px]" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="15" width="15" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-width="2" d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"></path></svg>

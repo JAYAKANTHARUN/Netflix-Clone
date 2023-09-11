@@ -60,6 +60,9 @@ const Landing = () => {
     const handlesignin = () => {
         navigate('/signin')
     }
+    const handlegetstarted = () => {
+        navigate('/step1')
+    }
 
     const changedropdown = (e) => {
         setlanguage(e.target.value)
@@ -148,7 +151,7 @@ const Landing = () => {
                                     <label className={`text-[#ccc] absolute sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus}>Email address</label>
                                 </div>
                                 <div>
-                                    <button onClick={handlesignin} className=" font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]  ">Get Started > </button>
+                                    <button onClick={handlegetstarted} className=" font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]  ">Get Started > </button>
                                 </div>
                             </form>
                         </div>
@@ -295,7 +298,7 @@ const Landing = () => {
                                 <label className={`text-[#ccc] absolute  sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused2 ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus2}>Email address</label>
                             </div>
                             <div>
-                                <button onClick={handlesignin} className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]">Get Started > </button>
+                                <button onClick={handlegetstarted} className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]">Get Started > </button>
                             </div>
                         </form>
                     </div>

@@ -116,7 +116,7 @@ const Step22 = () => {
                                         </tr>
                                         <tr className="sm:hidden">
                                             <td colSpan={5} className="text-center py-[10px] text-[#737373] ">
-                                            Video quality
+                                                Video quality
                                             </td>
                                         </tr>
                                         <tr className="border-b-[2px] border-[#ccc] ">
@@ -128,7 +128,7 @@ const Step22 = () => {
                                         </tr>
                                         <tr className="sm:hidden">
                                             <td colSpan={5} className="text-center py-[10px] text-[#737373] ">
-                                            Resolution
+                                                Resolution
                                             </td>
                                         </tr>
                                         <tr className="border-b-[2px] border-[#ccc] ">
@@ -140,7 +140,7 @@ const Step22 = () => {
                                         </tr>
                                         <tr className="sm:hidden">
                                             <td colSpan={5} className="text-center pt-[10px] text-[#737373] ">
-                                            Devices you can use to watch
+                                                Devices you can use to watch
                                             </td>
                                         </tr>
                                         <tr>

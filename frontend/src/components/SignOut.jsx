@@ -22,7 +22,9 @@ const SignOut = () => {
     }
 
     useEffect(()=>{
-
+        setTimeout(() => {
+            navigate('/')
+          },30000);
     })
 
     return (

@@ -61,7 +61,7 @@ const Landing = () => {
         navigate('/signin')
     }
     const handlegetstarted = () => {
-        navigate('/step1')
+        navigate('/step11')
     }
 
     const changedropdown = (e) => {

@@ -49,6 +49,13 @@ const SignIn = () => {
         setInputValue2(e.target.value);
     }
 
+    const handlesignin = () => {
+        navigate('/step21')
+    }
+    const handlenetflix = () => {
+        navigate('/')
+    }
+
     return (
         <div>
             <section className="w-[100%] sm:h-[146vh] sm:bg-[url('images/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg')] sm:bg-center sm:bg-cover bg-black h-[100%] ">
@@ -56,7 +63,7 @@ const SignIn = () => {
                     <header className="max-w-[1470px] mx-auto ">
                         <div className="px-[10px] items-center">
                             <figure>
-                                <img src={exampleImage} className="sm:w-[200px] w-[100px] " alt="error" />
+                                <img onClick={handlenetflix} src={exampleImage} className="sm:w-[200px] w-[100px] cursor-pointer " alt="error" />
                             </figure>
                         </div>
                     </header>
@@ -72,7 +79,7 @@ const SignIn = () => {
                                 <label className={`text-[#8c8c8c] absolute  sm:left-[20px] left-[20px] pointer-events-none transition-all ease-in-out duration-300 ${focused2 ? "sm:-top-[1px] text-[12px] -top-[1px]" : "sm:top-[13px] text-[16px] top-[14px]"}`} onClick={handlefocus2}>Password</label>
                             </div>
 
-                            <button className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-[18px] h-[50px] mt-[20px] mb-[10px] ">
+                            <button onClick={handlesignin} className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-[18px] h-[50px] mt-[20px] mb-[10px] ">
                                 Sign In
                             </button>
                             <div className="flex justify-between">

@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState , useEffect , useRef } from 'react'
 import movieposter from '../images/movieposter.jpg'
 import { FaPlay } from 'react-icons/fa';
 import { BiLike } from 'react-icons/bi';
@@ -12,12 +12,33 @@ const ListItem = ({ index }) => {
 
     const [ishovered, setishovered] = useState(false)
 
+    const timeoutRef = useRef(null);
+
+    const handleMouseEnter = () => {
+      timeoutRef.current = setTimeout(() => {
+        if (timeoutRef.current) {
+          setishovered(true);
+        }
+      }, 500);
+    };
+  
+    const handleMouseLeave = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      setishovered(false);
+    };
+
     return (
-        <div style={{ left: ishovered && index * 225 - 50 + index * 2.5 + 50 }} onMouseEnter={() => setishovered(true)} onMouseLeave={() => setishovered(false)} className=" hover:w-[325px] hover:h-[325px] hover:absolute hover:-top-[110px] w-[225px] h-[125px] rounded-md bg-[rgb(18,18,18)] overflow-hidden cursor-pointer text-white">
-            <img className='w-[100%] object-cover  ' src={movieposter} alt="error" />
+        <div style={{ left: ishovered && index * 225 - 50 + index * 2.5 + 50 }} className={`${
+            ishovered
+              ? ` w-[325px] h-[325px] absolute -top-[110px] shadow-[#393939] shadow-lg`
+              : ''
+          } w-[225px] h-[125px] rounded-md bg-[rgb(18,18,18)] overflow-hidden cursor-pointer text-white`}   onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+            <img className='w-[100%] object-cover ' src={movieposter} alt="error" />
             {ishovered && (
                 <>
-                    <video className='absolute top-0 left-0 right-0 w-[100%] object-cover  ' autoPlay muted loop>
+                    <video className=' w-[100%] object-cover -mt-[183px] ' autoPlay muted loop>
                         <source src={movietrailer} />
                     </video>
                     <div className='px-[20px] py-[10px] '>

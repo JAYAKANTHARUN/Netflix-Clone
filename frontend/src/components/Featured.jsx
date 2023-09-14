@@ -10,7 +10,7 @@ const Featured = ({ type }) => {
         <div>
             <div className="relative">
                 {type && (
-                    <div className="absolute flex items-center sm:top-[80px] top-[40px] sm:left-[50px] left-[20px] font-poppins font-bold sm:text-[30px] text-[13px] text-white my-[10px]">
+                    <div className="absolute flex items-center sm:top-[80px] top-[35px] sm:left-[50px] left-[20px] font-poppins font-bold sm:text-[30px] text-[13px] text-white my-[10px]">
                         <span>{type === 'movies' ? 'Movies' : 'TV Shows'}</span>
                         <select className="cursor-pointer sm:text-[14px] text-[10px] border-white border-[1px] text-white bg-black sm:ml-[50px] ml-[30px] pl-[5px] p-[2px] sm:w-[125px] w-[70px] hover:bg-transparent focus:bg-transparent">
                             <option className="bg-black">Genre</option>
@@ -34,7 +34,7 @@ const Featured = ({ type }) => {
                     <img className="w-full " src={movieImage} alt="error" />
                     {/* <div className="absolute bottom-0 left-0 w-full h-1/10 bg-gradient-to-t from-transparent via-transparent to-black" /> */}
                 </figure>
-                <div className="absolute sm:top-[40%] top-[40%] sm:left-[50px] left-[20px] sm:w-[35%] w-[50%] ">
+                <div className="absolute sm:top-[40%] top-[30%] sm:left-[50px] left-[20px] sm:w-[35%] w-[50%] ">
                     <figure>
                         <img className="sm:w-[80%] w-[70%] " src={movieTitle} alt="error" />
                     </figure>

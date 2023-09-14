@@ -11,8 +11,10 @@ const Home = () => {
     return (
         <div className="">
             <section className="max-w-[1170] mx-auto w-[100%] overflow-hidden " >
-                <Nav/>
+                <Nav />
                 <Featured />
+                <List />
+                <List />
                 <List />
                 <List />
                 <List />

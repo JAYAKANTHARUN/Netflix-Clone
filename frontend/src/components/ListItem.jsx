@@ -10,6 +10,8 @@ import movietrailer from '../images/movietrailer.mp4'
 
 const ListItem = ({ index }) => {
 
+    const isMobile = window.innerWidth <= 640
+
     const [ishovered, setishovered] = useState(false)
 
     const timeoutRef = useRef(null);
@@ -31,12 +33,12 @@ const ListItem = ({ index }) => {
 
     return (
         <div style={{ left: ishovered && index * 225 - 50 + index * 2.5 + 50 }} className={`${
-            ishovered
+            ishovered && !isMobile
               ? ` w-[325px] h-[325px] absolute -top-[110px] shadow-[#393939] shadow-lg`
               : ''
           } w-[225px] h-[125px] rounded-md bg-[rgb(18,18,18)] overflow-hidden cursor-pointer text-white`}   onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
             <img className='w-[100%] object-cover ' src={movieposter} alt="error" />
-            {ishovered && (
+            {ishovered && !isMobile && (
                 <>
                     <video className=' w-[100%] object-cover -mt-[183px] ' autoPlay muted loop>
                         <source src={movietrailer} />

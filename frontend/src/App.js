@@ -10,6 +10,7 @@ import Step22 from './components/Step22';
 import Step3 from './components/Step3'; 
 
 import { BrowserRouter , Routes , Route} from 'react-router-dom';
+import Watch from './components/Watch';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/step21' element={<Step21/>} />
         <Route path='/step22' element={<Step22/>} />
         <Route path='/step3' element={<Step3/>} />
+        <Route path='/watch' element={<Watch/>} />
       </Routes>
     </BrowserRouter>
   );

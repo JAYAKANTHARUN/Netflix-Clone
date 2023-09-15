@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 import deviceImage from '../images/Devices.png';
 import { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 
 const Step11 = () => {
-    // useEffect(()=>{
-    //     const auth = localStorage.getItem('user')
-    //     if (auth && auth.subscription==="yes") {
-    //         navigate('/home')
-    //     }
-    //     else if (auth && auth.subscription==='no'){
-    //         navigate('/step21')
-    //     }
-    // })
+
+    const location = useLocation();
+    const [email, setemail] = useState('')
+
+    useEffect(() => {
+        var paramemail = new URLSearchParams(location.search).get('email')
+        paramemail = paramemail.get('email')
+        setemail(paramemail)
+    },[location.search])
 
     const navigate = useNavigate()
 
@@ -26,7 +27,7 @@ const Step11 = () => {
         navigate('/')
     }
     const handlestep11 = () => {
-        navigate('/step12')
+        navigate(`/step12?email=${email}`)
     }
 
     return (
@@ -38,7 +39,7 @@ const Step11 = () => {
                             <img onClick={handlenetflix} src={exampleImage} className="sm:w-[200px] w-[90px] cursor-pointer " alt="error" />
                         </figure>
                         <div className="sm:text-[18px] text-[15px] sm:px-[20px]">
-                            <a href="/signin" className="font-poppins font-extrabold text-black sm:px-[15px] hover:underline"> Sign In</a>
+                            <a href="/signin" className="font-poppins cursor-pointer font-extrabold text-black sm:px-[15px] hover:underline"> Sign In</a>
                         </div>
                     </div>
                 </header>

@@ -12,9 +12,6 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json({ limit: '10mb' }));
-
 app.post('/login', async (req, res) => {
     if (req.body.password && req.body.email) {
         let user = await Users.findOne({email: req.body.email,password: req.body.password}).select("-password")
@@ -32,6 +29,45 @@ app.post('/login', async (req, res) => {
     }
     else {
         res.send({ user: "enter valid details" })
+    }
+})
+
+app.post('/register', async (req, res) => {
+    if (req.body.password && req.body.email && req.body.email!='null' ) {
+        let result = await Users.findOne({email:req.body.email})
+        if (!result) {
+            let user = new Users(req.body)
+            result = await user.save()
+            result = result.toObject()
+            delete result.password
+            jwt.sign({ result }, jwtkey, { expiresIn: "2h" }, (err, token) => {
+                if (err) {
+                    res.send({ result: "jwt error occured" })
+                }
+                res.send({ result, auth: token })
+            })
+        }
+        else {
+            res.send({ result: "account present" })
+        }
+    }
+    else {
+        res.send({ result: "enter valid details" })
+    }
+})
+
+app.post('/checkgetstarted', async(req,res)=>{
+    if (req.body.email){
+        let result = await Users.findOne({email:req.body.email})
+        if (!result) {
+            res.send({ result: "email not used" })
+        }
+        else {
+            res.send({ result: "email already used" })
+        }
+    }
+    else {
+        res.send({ result: "enter valid details" })
     }
 })
 

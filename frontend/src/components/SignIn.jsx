@@ -61,7 +61,6 @@ const SignIn = () => {
     }
 
     const handlesignin = async() => {
-        console.log( email, password )
         let result = await fetch('http://127.0.0.1:4000/login', {
             method: 'post',
             body: JSON.stringify({ email, password }),
@@ -70,7 +69,6 @@ const SignIn = () => {
             }
         })
         result = await result.json()
-        console.log(result)
         if ( result.user.email && result.auth && result.user.subscription==='no') {
             localStorage.setItem("user", JSON.stringify(result.user))
             localStorage.setItem("token", JSON.stringify(result.auth))
@@ -82,7 +80,7 @@ const SignIn = () => {
             navigate('/home')
         }
         else {
-            alert("Please enter valid details")
+            alert(result.user)
         }
     }
 

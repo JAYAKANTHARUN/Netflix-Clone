@@ -4,13 +4,6 @@ import exampleImage from '../images/5977590.png';
 
 const SignIn = () => {
 
-    // useEffect(()=>{
-    //     const auth = localStorage.getItem('user')
-    //     if (auth) {
-    //         navigate('/home')
-    //     }
-    // })
-
     const [language, setlanguage] = useState('english')
     const [focused, setfocused] = useState(false)
     const [email, setemail] = useState('')
@@ -70,11 +63,13 @@ const SignIn = () => {
         })
         result = await result.json()
         if ( result.user.email && result.auth && result.user.subscription==='no') {
+            localStorage.clear()
             localStorage.setItem("user", JSON.stringify(result.user))
             localStorage.setItem("token", JSON.stringify(result.auth))
             navigate('/step21') //navigate(`/step21?email=${result.user.email}&password=${result.user.password}`);
         }
         else if (result.user.email && result.auth && result.user.subscription==='yes'){
+            localStorage.clear()
             localStorage.setItem("user", JSON.stringify(result.user))
             localStorage.setItem("token", JSON.stringify(result.auth))
             navigate('/home')

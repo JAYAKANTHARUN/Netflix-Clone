@@ -9,18 +9,9 @@ import Video2 from '../images/download-icon.gif'
 import Image3 from '../images/device-pile-in.png'
 import Video3 from '../images/video-devices-in.m4v'
 import Image4 from '../images/AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png'
-import { useEffect } from "react";
+
 
 const Landing = () => {
-    // useEffect(()=>{
-    //     const auth = localStorage.getItem('user')
-    //     if (auth && auth.subscription==='yes') {
-    //         navigate('/home')
-    //     }
-    //     else if (auth && auth.subscription==='no'){
-    //         navigate('/step21')
-    //     }
-    // })
 
     const navigate = useNavigate()
 
@@ -124,20 +115,15 @@ const Landing = () => {
         setvisible1(false)
     }
     const handlegetstarted = async () => {
-        let result = await fetch('http://127.0.0.1:4000/checkgetstarted', {
-            method: 'post',
-            body: JSON.stringify({ email }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        result = await result.json()
-        if (result.result==='email not used') {
-            navigate(`/step11?email=${email}`)
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address");
+            return;
         }
-        else {
-            alert(result.result)
-        }
+        localStorage.clear()
+        localStorage.setItem("email", JSON.stringify(email))
+        navigate('/step11')
     }
 
     return (

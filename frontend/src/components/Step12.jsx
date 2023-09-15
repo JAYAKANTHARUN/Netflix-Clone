@@ -12,12 +12,6 @@ const Step12 = () => {
     const [password, setpassword] = useState('')
     const [subscription,setsubscription] = useState('no')
 
-    useEffect(() => {
-        const paramemail = new URLSearchParams(location.search).get('email')
-        setemail(paramemail)
-    }, [location.search])
-
-
     const changedropdown = (e) => {
         setlanguage(e.target.value)
     }
@@ -34,6 +28,7 @@ const Step12 = () => {
         })
         result = await result.json()
         if (result.result.email && result.auth) {
+            localStorage.clear()
             localStorage.setItem("user", JSON.stringify(result.result))
             localStorage.setItem("token", JSON.stringify(result.auth))
             navigate('/step21') //navigate(`/step21?email=${result.user.email}&password=${result.user.password}`);
@@ -63,6 +58,16 @@ const Step12 = () => {
     const handlenetflix = () => {
         navigate('/')
     }
+
+    useEffect(()=>{
+        const mail=JSON.parse(localStorage.getItem("email"))
+        if (!mail){
+            navigate('/')
+        }
+        else{
+            setemail(mail)
+        }
+    })
 
     return (
         <div>

@@ -3,21 +3,9 @@ import { useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 import deviceImage from '../images/Devices.png';
 import { useEffect } from "react";
-import { useLocation } from 'react-router-dom';
 
 const Step11 = () => {
-
-    const location = useLocation();
-    const [email, setemail] = useState('')
-
-    useEffect(() => {
-        var paramemail = new URLSearchParams(location.search).get('email')
-        paramemail = paramemail.get('email')
-        setemail(paramemail)
-    },[location.search])
-
     const navigate = useNavigate()
-
     const [language, setlanguage] = useState('english')
 
     const changedropdown = (e) => {
@@ -27,8 +15,15 @@ const Step11 = () => {
         navigate('/')
     }
     const handlestep11 = () => {
-        navigate(`/step12?email=${email}`)
+        navigate('/step12')
     }
+
+    useEffect(()=>{
+        const mail=localStorage.getItem("email")
+        if (!mail){
+            navigate('/')
+        }
+    })
 
     return (
         <div>

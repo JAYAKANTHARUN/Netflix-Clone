@@ -48,21 +48,6 @@ app.post('/register', async (req, res) => {
             })
         }
         else {
-            res.send({ result: "account present" })
-        }
-    }
-    else {
-        res.send({ result: "enter valid details" })
-    }
-})
-
-app.post('/checkgetstarted', async(req,res)=>{
-    if (req.body.email){
-        let result = await Users.findOne({email:req.body.email})
-        if (!result) {
-            res.send({ result: "email not used" })
-        }
-        else {
             res.send({ result: "email already used" })
         }
     }
@@ -70,6 +55,22 @@ app.post('/checkgetstarted', async(req,res)=>{
         res.send({ result: "enter valid details" })
     }
 })
+
+// app.post('/check', async(req,res)=>{
+//     if (req.body.email){
+//         let result = await Users.findOne({email:req.body.email})
+//         console.log(result)
+//         if (!result) {
+//             res.send({ result: "email not used" })
+//         }
+//         else {
+//             res.send({ result: "email already used" })
+//         }
+//     }
+//     else {
+//         res.send({ result: "enter valid details" })
+//     }
+// })
 
 function verifytoken(req, res, next) {
     const token = req.headers['authorization']

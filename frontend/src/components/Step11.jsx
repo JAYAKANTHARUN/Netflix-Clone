@@ -2,8 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 import deviceImage from '../images/Devices.png';
+import { useEffect } from "react";
 
 const Step11 = () => {
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth && auth.subscription==="yes") {
+    //         navigate('/home')
+    //     }
+    //     else if (auth && auth.subscription==='no'){
+    //         navigate('/step21')
+    //     }
+    // })
 
     const navigate = useNavigate()
 

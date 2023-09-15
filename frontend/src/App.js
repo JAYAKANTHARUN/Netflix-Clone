@@ -11,21 +11,27 @@ import Step3 from './components/Step3';
 
 import { BrowserRouter , Routes , Route} from 'react-router-dom';
 import Watch from './components/Watch';
+import PrivateSignIn from './components/PrivateSignIn';
+import PrivateSignOut from './components/PrivateSignOut';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Landing/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path='/signin' element={<SignIn/>} />
-        <Route path='/signout' element={<SignOut/>} />
-        <Route path='/step11' element={<Step11/>} />
-        <Route path='/step12' element={<Step12/>} />
-        <Route path='/step21' element={<Step21/>} />
-        <Route path='/step22' element={<Step22/>} />
-        <Route path='/step3' element={<Step3/>} />
-        <Route path='/watch' element={<Watch/>} />
+        <Route element={<PrivateSignIn/>}>
+          <Route path='/home' element={<Home/>} />
+          <Route path='/step21' element={<Step21/>} />
+          <Route path='/step22' element={<Step22/>} />
+          <Route path='/step3' element={<Step3/>} />
+          <Route path='/watch' element={<Watch/>} />
+        </Route>
+        <Route element={<PrivateSignOut/>}>
+          <Route path='/' element={<Landing/>} />
+          <Route path='/signin' element={<SignIn/>} />
+          <Route path='/signout' element={<SignOut/>} />
+          <Route path='/step11' element={<Step11/>} />
+          <Route path='/step12' element={<Step12/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

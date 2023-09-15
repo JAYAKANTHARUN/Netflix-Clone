@@ -21,11 +21,18 @@ const SignOut = () => {
         navigate('/')
     }
 
-    useEffect(()=>{
-        setTimeout(() => {
-            navigate('/')
-          },30000);
-    })
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth && auth.subscription==='yes') {
+    //         navigate('/home')
+    //     }
+    //     else if (auth && auth.subscription==='no'){
+    //         navigate('/step21')
+    //     }
+    //     setTimeout(() => {
+    //         navigate('/')
+    //       },30000);
+    // })
 
     return (
         <div>

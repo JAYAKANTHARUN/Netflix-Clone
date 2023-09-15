@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 
 const SignIn = () => {
+
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth) {
+    //         navigate('/home')
+    //     }
+    // })
+
     const [language, setlanguage] = useState('english')
     const [focused, setfocused] = useState(false)
-    const [inputValue, setInputValue] = useState('')
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
     const [focused2, setfocused2] = useState(false)
-    const [inputValue2, setInputValue2] = useState('')
 
     const navigate = useNavigate()
 
@@ -19,42 +27,65 @@ const SignIn = () => {
     }
 
     const handlefocus = () => {
-        if (inputValue === '') {
+        if (email === '') {
             setfocused(!focused)
         }
     }
     const handleblur = () => {
 
-        if (inputValue === '') {
+        if (email === '') {
             setfocused(!focused)
-            setInputValue('')
+            setemail('')
         }
 
     }
-    const handleChange = (e) => {
-        setInputValue(e.target.value);
+    const handleemail = (e) => {
+        setemail(e.target.value);
     }
     const handlefocus2 = () => {
-        if (inputValue2 === '') {
+        if (password === '') {
             setfocused2(!focused2)
         }
     }
     const handleblur2 = () => {
-        if (inputValue2 === '') {
+        if (password === '') {
             setfocused2(!focused2)
-            setInputValue2('')
+            setpassword('')
         }
     }
-    const handleChange2 = (e) => {
-        setInputValue2(e.target.value);
-    }
-
-    const handlesignin = () => {
-        navigate('/step21')
+    const handlepassword = (e) => {
+        setpassword(e.target.value);
     }
     const handlenetflix = () => {
         navigate('/')
     }
+
+    const handlesignin = async() => {
+        console.log( email, password )
+        let result = await fetch('http://127.0.0.1:4000/login', {
+            method: 'post',
+            body: JSON.stringify({ email, password }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        result = await result.json()
+        console.log(result)
+        if ( result.user.email && result.auth && result.user.subscription==='no') {
+            localStorage.setItem("user", JSON.stringify(result.user))
+            localStorage.setItem("token", JSON.stringify(result.auth))
+            navigate('/step21') //navigate(`/step21?email=${result.user.email}&password=${result.user.password}`);
+        }
+        else if (result.user.email && result.auth && result.user.subscription==='yes'){
+            localStorage.setItem("user", JSON.stringify(result.user))
+            localStorage.setItem("token", JSON.stringify(result.auth))
+            navigate('/home')
+        }
+        else {
+            alert("Please enter valid details")
+        }
+    }
+
 
     return (
         <div>
@@ -71,11 +102,11 @@ const SignIn = () => {
                         <div className="sm:py-[50px] py-[20px] sm:px-[70px] px-[20px] flex flex-col ">
                             <h1 className="font-poppins font-extrabold text-3xl text-white py-[5px] float-left">Sign In</h1><br />
                             <div className="relative sm:max-w-[400px] max-w-[300px]  mx-auto mb-[20px]">
-                                <input onChange={handleChange} value={inputValue} onFocus={handlefocus} onBlur={handleblur} className="focus:bg-[#4a4a4a] bg-[#333] text-[xl] px-[20px] h-[50px] rounded-md sm:w-[310px] w-[280px] mx-auto " type="text" /><br />
-                                <label className={`text-[#8c8c8c] absolute sm:left-[20px] left-[20px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:-top-[1px] text-[12px] -top-[1px]" : "sm:top-[13px] text-[16px] top-[14px]"}`} onClick={handlefocus}>Email or phone number</label>
+                                <input onChange={handleemail} value={email} onFocus={handlefocus} onBlur={handleblur} className="focus:bg-[#4a4a4a] bg-[#333] text-[xl] px-[20px] h-[50px] rounded-md sm:w-[310px] w-[280px] mx-auto " type="text" /><br />
+                                <label className={`text-[#8c8c8c] absolute sm:left-[20px] left-[20px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:-top-[1px] text-[12px] -top-[1px]" : "sm:top-[13px] text-[16px] top-[14px]"}`} onClick={handlefocus}>Email</label>
                             </div>
                             <div className="relative sm:max-w-[400px] max-w-[300px] mx-auto mb-[10px]">
-                                <input onChange={handleChange2} value={inputValue2} onFocus={handlefocus2} onBlur={handleblur2} className="focus:bg-[#4a4a4a] bg-[#333] text-[xl] px-[20px] mb-[10px] h-[50px] rounded-md sm:w-[310px] w-[280px] mx-auto" type="password" /><br />
+                                <input onChange={handlepassword} value={password} onFocus={handlefocus2} onBlur={handleblur2} className="focus:bg-[#4a4a4a] bg-[#333] text-[xl] px-[20px] mb-[10px] h-[50px] rounded-md sm:w-[310px] w-[280px] mx-auto" type="password" /><br />
                                 <label className={`text-[#8c8c8c] absolute  sm:left-[20px] left-[20px] pointer-events-none transition-all ease-in-out duration-300 ${focused2 ? "sm:-top-[1px] text-[12px] -top-[1px]" : "sm:top-[13px] text-[16px] top-[14px]"}`} onClick={handlefocus2}>Password</label>
                             </div>
 

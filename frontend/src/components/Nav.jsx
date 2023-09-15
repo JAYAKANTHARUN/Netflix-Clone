@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import exampleImage from '../images/5977590.png';
 import profileImage from '../images/favicon.png'
@@ -27,9 +27,13 @@ const Nav = () => {
         setnavistop(window.pageYOffset === 0 ? true : false)
     }
 
-    const handlelogout = () => {
+    const handlelogout=()=>{
+        localStorage.clear()
         navigate('/')
     }
+    useEffect(()=>{
+
+    },handlelogout)
 
   return (
     <div className='max-w-[1170] mx-auto w-[100%] overflow-hidden'>

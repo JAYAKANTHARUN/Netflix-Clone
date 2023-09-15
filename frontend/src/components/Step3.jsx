@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 import lockImage from '../images/Lock.png';
@@ -19,6 +19,16 @@ const Step3 = () => {
         navigate('/home')
     }
 
+    const handlesignout=()=>{
+        localStorage.clear()
+        navigate('/signout')
+    }
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth === null) {
+    //         navigate('/')
+    //     }
+    // })
     return (
         <div>
             <section className="w-[100%] sm:h-[85vh] h-[100vh] bg-center bg-cover">
@@ -28,7 +38,7 @@ const Step3 = () => {
                             <img onClick={handlenetflix} src={exampleImage} className="sm:w-[200px] w-[90px] cursor-pointer " alt="error" />
                         </figure>
                         <div className="sm:text-[18px] text-[15px] sm:px-[20px]">
-                            <a href="/signout" className="font-poppins font-extrabold text-black sm:px-[15px] hover:underline"> Sign Out</a>
+                            <span onClick={handlesignout} className="font-poppins cursor-pointer font-extrabold text-black sm:px-[15px] hover:underline"> Sign Out</span>
                         </div>
                     </div>
                 </header>

@@ -9,8 +9,18 @@ import Video2 from '../images/download-icon.gif'
 import Image3 from '../images/device-pile-in.png'
 import Video3 from '../images/video-devices-in.m4v'
 import Image4 from '../images/AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png'
+import { useEffect } from "react";
 
 const Landing = () => {
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth && auth.subscription==='yes') {
+    //         navigate('/home')
+    //     }
+    //     else if (auth && auth.subscription==='no'){
+    //         navigate('/step21')
+    //     }
+    // })
 
     const navigate = useNavigate()
 

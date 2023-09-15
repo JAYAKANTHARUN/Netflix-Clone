@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 import checkImage from '../images/Checkmark.png';
+import { useEffect } from "react";
 
 const Step21 = () => {
 
@@ -18,6 +19,16 @@ const Step21 = () => {
     const handlestep21 = () => {
         navigate('/step22')
     }
+    const handlesignout=()=>{
+        localStorage.clear()
+        navigate('/signout')
+    }
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth === null) {
+    //         navigate('/')
+    //     }
+    // })
 
     return (
         <div>
@@ -28,7 +39,7 @@ const Step21 = () => {
                             <img onClick={handlenetflix} src={exampleImage} className="sm:w-[200px] w-[90px] cursor-pointer " alt="error" />
                         </figure>
                         <div className="sm:text-[18px] text-[15px] sm:px-[20px]">
-                            <a href="/signout" className="font-poppins font-extrabold text-black sm:px-[15px] hover:underline"> Sign Out</a>
+                            <span onClick={handlesignout} className="font-poppins cursor-pointer font-extrabold text-black sm:px-[15px] hover:underline"> Sign Out</span>
                         </div>
                     </div>
                 </header>

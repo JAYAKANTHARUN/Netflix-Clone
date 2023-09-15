@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import exampleImage from '../images/5977590.png';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Step12 = () => {
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem('user')
+    //     if (auth && auth.subscription==='yes') {
+    //         navigate('/home')
+    //     }
+    //     else if (auth && auth.subscription==='no'){
+    //         navigate('/step21')
+    //     }
+    // })
     const [language, setlanguage] = useState('english')
     const [focused, setfocused] = useState(false)
     const [inputValue, setInputValue] = useState('')

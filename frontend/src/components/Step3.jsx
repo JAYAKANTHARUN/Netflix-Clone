@@ -6,9 +6,13 @@ import lockImage from '../images/Lock.png';
 const Step3 = () => {
 
     const navigate = useNavigate()
-    useEffect(()=>{
+
+    const [email,setemail] = useState('')
+
+    useEffect(() => {
         const auth = JSON.parse(localStorage.getItem('user'))
-        const subscription=auth.subscription
+        const subscription = auth.subscription
+        setemail(auth.email)
         if (subscription === 'yes') {
             navigate('/home')
         }
@@ -22,15 +26,34 @@ const Step3 = () => {
     const handlenetflix = () => {
         navigate('/')
     }
-    const handlestep3 = () => {
-        navigate('/home')
-    }
 
-    const handlesignout=()=>{
+    const handlesignout = () => {
         localStorage.clear()
         navigate('/signout')
     }
-    
+
+    const handlestep3 = async() => {
+        let result = await fetch('http://127.0.0.1:4000/update', {
+            method: 'post',
+            body: JSON.stringify({ email }),
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': JSON.parse(localStorage.getItem('token'))
+            }
+        })
+        result = await result.json()
+        console.log(result)
+        if (result.item.email) {
+            localStorage.removeItem("user")
+            localStorage.setItem("user", JSON.stringify(result.item))
+            navigate('/home') //navigate(`/step21?email=${result.user.email}&password=${result.user.password}`);
+        }
+        else {
+            alert(result.result)
+        }
+
+    }
+
     return (
         <div>
             <section className="w-[100%] sm:h-[85vh] h-[100vh] bg-center bg-cover">

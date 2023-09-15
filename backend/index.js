@@ -56,6 +56,23 @@ app.post('/register', async (req, res) => {
     }
 })
 
+app.post('/update',verifytoken, async (req, res) => {
+    if (req.body.email) {
+        let item = await Users.findOne({email: req.body.email}).select("-password")
+        if (item) {
+            item.subscription = 'yes';
+            item = await item.save();
+            res.send({ item })
+        }
+        else {
+            res.send({ item: "no user found" })
+        }
+    }
+    else {
+        res.send({ item: "enter valid details" })
+    }
+})
+
 // app.post('/check', async(req,res)=>{
 //     if (req.body.email){
 //         let result = await Users.findOne({email:req.body.email})

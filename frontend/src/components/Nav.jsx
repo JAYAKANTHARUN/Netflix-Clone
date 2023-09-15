@@ -29,11 +29,8 @@ const Nav = () => {
 
     const handlelogout=()=>{
         localStorage.clear()
-        navigate('/')
+        navigate('/signout')
     }
-    useEffect(()=>{
-
-    },handlelogout)
 
   return (
     <div className='max-w-[1170] mx-auto w-[100%] overflow-hidden'>

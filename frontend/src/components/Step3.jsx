@@ -6,6 +6,13 @@ import lockImage from '../images/Lock.png';
 const Step3 = () => {
 
     const navigate = useNavigate()
+    useEffect(()=>{
+        const auth = JSON.parse(localStorage.getItem('user'))
+        const subscription=auth.subscription
+        if (subscription === 'yes') {
+            navigate('/home')
+        }
+    })
 
     const [language, setlanguage] = useState('english')
 
@@ -23,12 +30,7 @@ const Step3 = () => {
         localStorage.clear()
         navigate('/signout')
     }
-    // useEffect(()=>{
-    //     const auth = localStorage.getItem('user')
-    //     if (auth === null) {
-    //         navigate('/')
-    //     }
-    // })
+    
     return (
         <div>
             <section className="w-[100%] sm:h-[85vh] h-[100vh] bg-center bg-cover">

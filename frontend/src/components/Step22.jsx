@@ -6,6 +6,13 @@ import { useEffect } from "react";
 const Step22 = () => {
 
     const navigate = useNavigate()
+    useEffect(()=>{
+        const auth = JSON.parse(localStorage.getItem('user'))
+        const subscription=auth.subscription
+        if (subscription === 'yes') {
+            navigate('/home')
+        }
+    })
 
     const [language, setlanguage] = useState('english')
     const [selectedOption, setSelectedOption] = useState('');
@@ -37,12 +44,7 @@ const Step22 = () => {
         localStorage.clear()
         navigate('/signout')
     }
-    // useEffect(()=>{
-    //     const auth = localStorage.getItem('user')
-    //     if (auth === null) {
-    //         navigate('/')
-    //     }
-    // })
+    
 
     return (
         <div>

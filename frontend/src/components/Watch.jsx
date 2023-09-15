@@ -10,7 +10,7 @@ function Watch() {
     const user=JSON.parse(localStorage.getItem('user'))
     const subscription=user.subscription
     if (subscription==='yes'){
-        navigate('/home')
+        navigate('/watch')
     }
     else{
         navigate('/step21')

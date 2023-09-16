@@ -10,6 +10,7 @@ const Step3 = () => {
 
     const [email, setemail] = useState('')
     const [plan, setplan] = useState('')
+    const [price,setprice] = useState('')
 
     const [language, setlanguage] = useState('english')
 
@@ -27,23 +28,21 @@ const Step3 = () => {
 
     const handlestep3 = async () => {
 
-        let result = await fetch('http://127.0.0.1:4000/update', {
-            method: 'post',
-            body: JSON.stringify({ email, plan }),
+        let result = await fetch('http://127.0.0.1:4000/payment',{
+            method:'post',
+            body: JSON.stringify({
+                items:[
+                    {email:email,plan:plan,quantity:1}
+                ],
+            }),
             headers: {
                 'Content-Type': 'application/json',
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
         })
         result = await result.json()
-        console.log(result)
-        if (result.item.email) {
-            localStorage.removeItem("user")
-            localStorage.setItem("user", JSON.stringify(result.item))
-            navigate('/home') //navigate(`/step21?email=${result.user.email}&password=${result.user.password}`);
-        }
-        else {
-            alert(result.item)
+        if (result){
+            window.location = result.result
         }
     }
 
@@ -52,6 +51,19 @@ const Step3 = () => {
         const lsplan = new URLSearchParams(location.search).get('plan');
         setplan(lsplan)
 
+        if (plan==='mobile'){
+            setprice('149')
+        }
+        else if (plan==='basic'){
+            setprice('199')
+        }
+        else if (plan==='standard'){
+            setprice('499')
+        }
+        else if (plan==='premium'){
+            setprice('649')
+        }
+
         const auth = JSON.parse(localStorage.getItem('user'))
         const subscription = auth.subscription
         setemail(auth.email)
@@ -59,7 +71,7 @@ const Step3 = () => {
         if (subscription === 'yes') {
             navigate('/home')
         }
-    }, [])
+    })
 
     return (
         <div>

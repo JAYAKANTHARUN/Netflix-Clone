@@ -12,6 +12,48 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
+const dotenv = require('dotenv')
+dotenv.config()
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
+const storeItems = new Map([
+    ['mobile',{price:14900,name:'Subscription - Mobile'}],
+    ['basic',{price:19900,name:'Subscription - Basic'}],
+    ['standard',{price:49900,name:'Subscription - Standard'}],
+    ['premium',{price:64900,name:'Subscription - Premium'}],
+])
+
+app.post('/payment', verifytoken ,async(req,res)=>{
+    const { items } = req.body;
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types : ['card'],
+        mode : 'payment', //subscription
+        line_items : req.body.items.map(item=>{
+            const storeItem = storeItems.get(item.plan)
+            return {
+                price_data : {
+                    currency : 'inr',
+                    product_data : {
+                        name : storeItem.name
+                    },
+                    unit_amount : storeItem.price
+                },
+                quantity : item.quantity
+            }
+        }),
+        success_url : `http://127.0.0.1:3000/success?email=${items[0].email}&plan=${items[0].plan}`,
+        cancel_url : `http://127.0.0.1:3000/step21`
+           
+    })
+    if (session){
+        res.send({ result : session.url })
+    }
+    else{
+        res.send({ result : 'no stripe session created' })
+    }
+})
+
 app.post('/login', async (req, res) => {
     if (req.body.password && req.body.email) {
         let user = await Users.findOne({email: req.body.email,password: req.body.password}).select("-password")

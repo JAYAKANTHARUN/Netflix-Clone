@@ -114,7 +114,7 @@ const Landing = () => {
         setvisible3(false)
         setvisible1(false)
     }
-    const handlegetstarted = async () => {
+    const handlegetstarted1 = async () => {
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -123,6 +123,17 @@ const Landing = () => {
         }
         localStorage.clear()
         localStorage.setItem("email", JSON.stringify(email))
+        navigate('/step11')
+    }
+    const handlegetstarted2 = async () => {
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email2)) {
+            alert("Please enter a valid email address");
+            return;
+        }
+        localStorage.clear()
+        localStorage.setItem("email", JSON.stringify(email2))
         navigate('/step11')
     }
 
@@ -160,7 +171,7 @@ const Landing = () => {
                                     <label className={`text-[#ccc] absolute sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus}>Email address</label>
                                 </div>
                                 <div>
-                                    <button onClick={handlegetstarted} className=" font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]  ">Get Started > </button>
+                                    <button onClick={handlegetstarted1} className=" font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]  ">Get Started > </button>
                                 </div>
                             </form>
                         </div>
@@ -307,7 +318,7 @@ const Landing = () => {
                                 <label className={`text-[#ccc] absolute  sm:left-[21px] left-[21px] pointer-events-none transition-all ease-in-out duration-300 ${focused2 ? "sm:top-[0px] text-[12px] top-[1px]" : "sm:top-[18px] text-[16px] top-[18px]"}`} onClick={handlefocus2}>Email address</label>
                             </div>
                             <div>
-                                <button onClick={handlegetstarted} className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]">Get Started > </button>
+                                <button onClick={handlegetstarted2} className="font-poppins font-bold bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out rounded-[5px] text-white px-[15px] text-xl h-12 w-40 sm:ml-[0px]">Get Started > </button>
                             </div>
                         </form>
                     </div>

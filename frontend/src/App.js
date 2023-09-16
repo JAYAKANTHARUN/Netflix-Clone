@@ -13,6 +13,7 @@ import { BrowserRouter , Routes , Route} from 'react-router-dom';
 import Watch from './components/Watch';
 import PrivateSignIn from './components/PrivateSignIn';
 import PrivateSignOut from './components/PrivateSignOut';
+import Success from './components/Success';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/step22' element={<Step22/>} />
           <Route path='/step3' element={<Step3/>} />
           <Route path='/watch' element={<Watch/>} />
+          <Route path='/success' element={<Success/>} />
         </Route>
         <Route element={<PrivateSignOut/>}>
           <Route path='/' element={<Landing/>} />

@@ -8,6 +8,8 @@ const Step21 = () => {
 
     const navigate = useNavigate()
     useEffect(()=>{
+        localStorage.removeItem("plan")
+
         const auth = JSON.parse(localStorage.getItem('user'))
         const subscription=auth.subscription
         if (subscription === 'yes') {

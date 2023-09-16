@@ -57,10 +57,12 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/update',verifytoken, async (req, res) => {
-    if (req.body.email) {
+    if (req.body.email && req.body.plan) {
+        console.log(req.body.plan)
         let item = await Users.findOne({email: req.body.email}).select("-password")
         if (item) {
             item.subscription = 'yes';
+            item.plan = req.body.plan;
             item = await item.save();
             res.send({ item })
         }

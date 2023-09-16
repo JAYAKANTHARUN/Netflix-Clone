@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import exampleImage from '../images/5977590.png';
 import lockImage from '../images/Lock.png';
 
 const Step3 = () => {
+    const location = useLocation()
 
     const navigate = useNavigate()
 
-    const [email,setemail] = useState('')
-
-    useEffect(() => {
-        const auth = JSON.parse(localStorage.getItem('user'))
-        const subscription = auth.subscription
-        setemail(auth.email)
-        if (subscription === 'yes') {
-            navigate('/home')
-        }
-    })
+    const [email, setemail] = useState('')
+    const [plan, setplan] = useState('')
 
     const [language, setlanguage] = useState('english')
 
@@ -32,10 +25,11 @@ const Step3 = () => {
         navigate('/signout')
     }
 
-    const handlestep3 = async() => {
+    const handlestep3 = async () => {
+
         let result = await fetch('http://127.0.0.1:4000/update', {
             method: 'post',
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ email, plan }),
             headers: {
                 'Content-Type': 'application/json',
                 'authorization': JSON.parse(localStorage.getItem('token'))
@@ -49,10 +43,23 @@ const Step3 = () => {
             navigate('/home') //navigate(`/step21?email=${result.user.email}&password=${result.user.password}`);
         }
         else {
-            alert(result.result)
+            alert(result.item)
         }
-
     }
+
+    useEffect(() => {
+
+        const lsplan = new URLSearchParams(location.search).get('plan');
+        setplan(lsplan)
+
+        const auth = JSON.parse(localStorage.getItem('user'))
+        const subscription = auth.subscription
+        setemail(auth.email)
+
+        if (subscription === 'yes') {
+            navigate('/home')
+        }
+    }, [])
 
     return (
         <div>

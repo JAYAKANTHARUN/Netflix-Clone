@@ -6,30 +6,32 @@ import { useEffect } from "react";
 const Step22 = () => {
 
     const navigate = useNavigate()
+
+    const [language, setlanguage] = useState('english')
+    const [selectedOption, setSelectedOption] = useState('mobile');
+
+    const [selected1, setselected1] = useState(true)
+    const [selected2, setselected2] = useState(false)
+    const [selected3, setselected3] = useState(false)
+    const [selected4, setselected4] = useState(false) 
+
+    const handleOptions = (e) => {
+        const selectedValue = e.target.value;
+        setSelectedOption(selectedValue);
+
+        setselected1(selectedValue === 'mobile');
+        setselected2(selectedValue === 'basic');
+        setselected3(selectedValue === 'standard');
+        setselected4(selectedValue === 'premium');
+    };
+
     useEffect(()=>{
         const auth = JSON.parse(localStorage.getItem('user'))
         const subscription=auth.subscription
         if (subscription === 'yes') {
             navigate('/home')
         }
-    })
-
-    const [language, setlanguage] = useState('english')
-    const [selectedOption, setSelectedOption] = useState('');
-    const [selected1, setselected1] = useState(true)
-    const [selected2, setselected2] = useState(false)
-    const [selected3, setselected3] = useState(false)
-    const [selected4, setselected4] = useState(false)
-
-
-    const handleOptions = (e) => {
-        const selectedValue = e.target.value;
-        setSelectedOption(selectedValue);
-        setselected1(selectedValue === 'mobile');
-        setselected2(selectedValue === 'basic');
-        setselected3(selectedValue === 'standard');
-        setselected4(selectedValue === 'premium');
-    };
+    },[])  
 
     const changedropdown = (e) => {
         setlanguage(e.target.value)
@@ -38,14 +40,13 @@ const Step22 = () => {
         navigate('/')
     }
     const handlestep22 = () => {
-        navigate('/step3')
+        navigate(`/step3?plan=${selectedOption}`)
     }
     const handlesignout=()=>{
         localStorage.clear()
         navigate('/signout')
     }
     
-
     return (
         <div>
             <section className="w-[100%] sm:h-[150vh] h-[190vh] bg-center bg-cover">

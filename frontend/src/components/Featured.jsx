@@ -30,20 +30,20 @@ const Featured = ({ type }) => {
                         </select>
                     </div>
                 )}
-                <figure>
-                    <img className="w-full " src={movieImage} alt="error" />
-                    {/* <div className="absolute bottom-0 left-0 w-full h-1/10 bg-gradient-to-t from-transparent via-transparent to-black" /> */}
+                <figure className='relative'>
+                    <img className="w-full" src={movieImage} alt="error" />
+                    <div className="absolute bottom-0 left-0 w-full h-[10%] bg-gradient-to-t from-black to-transparent" />
                 </figure>
                 <div className="absolute sm:top-[40%] top-[30%] sm:left-[50px] left-[20px] sm:w-[35%] w-[50%] ">
                     <figure>
                         <img className="sm:w-[80%] w-[70%] " src={movieTitle} alt="error" />
                     </figure>
-                    <div className="font-poppins font-bold text-white sm:text-[18px] text-[9px] sm:py-[20px] py-[8px] ">
+                    <div className="font-poppins font-bold text-white sm:text-[18px] text-[9px] sm:py-[20px] py-[2px] ">
                         <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta consequuntur</h1>
                     </div>
-                    <div className="flex sm:gap-[20px] gap-[10px]">
-                        <button className="flex font-poppins font-bold sm:text-[18px] text-[11px] bg-white hover:bg-[#ccc] sm:w-[125px] w-[70px] sm:h-[50px] h-[25px] items-center justify-center rounded-md "> <FaPlay className="sm:text-[23px] text-[12px] sm:mr-[10px] mr-[5px] " /> <span>Play</span> </button>
-                        <button className="flex font-poppins font-bold text-white sm:text-[18px] text-[11px] bg-[rgba(109,109,110,0.7)] hover:bg-[rgba(109,109,110,0.4)] sm:w-[175px] w-[90px] sm:h-[50px] h-[25px] items-center justify-center rounded-md "> <BiInfoCircle className="text-white sm:text-[35px] text-[15px] sm:mr-[10px] mr-[5px] " /> <span>More Info</span> </button>
+                    <div className="flex sm:gap-[20px] gap-[5px]">
+                        <button className="flex font-poppins font-bold sm:text-[18px] text-[8px] bg-white hover:bg-[#ccc] sm:w-[125px] w-[50px] sm:h-[50px] h-[20px] items-center justify-center rounded-md "> <FaPlay className="sm:text-[23px] text-[12px] sm:mr-[10px] mr-[5px] " /> <span>Play</span> </button>
+                        <button className="flex font-poppins font-bold text-white sm:text-[18px] text-[8px] bg-[rgba(109,109,110,0.7)] hover:bg-[rgba(109,109,110,0.4)] sm:w-[175px] w-[70px] sm:h-[50px] h-[20px] items-center justify-center rounded-md "> <BiInfoCircle className="text-white sm:text-[35px] text-[15px] sm:mr-[10px] mr-[5px] " /> <span>More Info</span> </button>
                     </div>
                 </div>
             </div>

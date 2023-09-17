@@ -31,7 +31,7 @@ const List = () => {
     return (
         <div className="bg-black">
             <h1 className="font-poppins font-bold sm:text-[23px] text-[13px] text-white sm:px-[50px] px-[20px] sm:pt-[50px] sm:pb-[20px] pt-[8px] pb-[8px] ">Continue to watch</h1>
-            <div className="flex w-[100%] relative">
+            <div className="flex w-[100%] relative">   {/*${isMobile?'overflow-x-scroll':''}*/}
                 <button onClick={() => scroll('left')} className={` ${slidenumber === 0 ? 'hidden' : ''} bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.7)] h-[100%] absolute z-10 left-0 top-0 bottom-0 m-auto `}><BiSolidLeftArrow className="text-white sm:text-[50px] text-[20px] " /></button>
                 <div className="flex gap-[5px] sm:ml-[50px] ml-[20px] transition duration-500 ease-in-out" ref={listref}>
                     <ListItem index={0}/>

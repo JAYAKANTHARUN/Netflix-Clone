@@ -24,11 +24,11 @@ const Home = () => {
             <section className="max-w-[1170] mx-auto w-[100%] overflow-hidden " >
                 <Nav />
                 <Featured />
-                <List />
-                <List />
-                <List />
-                <List />
-                <List />
+                <List type={'Trending'} />
+                <List type={'Popular TV Shows'} />
+                <List type={'Top Rated TV Shows'} />
+                <List type={'Popular Movies'} />
+                <List type={'Top Rated Movies'} />
             </section>
         </div>
     )

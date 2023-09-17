@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import movieImage from '../images/movieimage.webp'
 import movieTitle from '../images/movietitle.webp'
 import { FaPlay } from 'react-icons/fa';
 import { BiInfoCircle } from 'react-icons/bi';
 
 const Featured = ({ type }) => {
+
+    const [movie, setmovie] = useState('')
+
+    const getmovie = async () => {
+        let url = await fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+            }
+        })
+        url = await url.json()
+        const randomIndex = Math.floor(Math.random() * 20) + 1;
+        console.log(url.results[randomIndex])
+        setmovie(url.results[randomIndex])
+    }
+
+    useEffect(() => {
+
+        const fetchdata = async() => {
+            await getmovie()
+        }
+        
+        fetchdata()
+
+    }, [])
 
     return (
         <div>
@@ -31,15 +57,15 @@ const Featured = ({ type }) => {
                     </div>
                 )}
                 <figure className='relative'>
-                    <img className="w-full" src={movieImage} alt="error" />
+                    <img className="w-full" src={movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : ''} alt="error" />
                     <div className="absolute bottom-0 left-0 w-full h-[10%] bg-gradient-to-t from-black to-transparent" />
                 </figure>
-                <div className="absolute sm:top-[40%] top-[30%] sm:left-[50px] left-[20px] sm:w-[35%] w-[50%] ">
+                <div className="absolute sm:top-[35%] top-[30%] sm:left-[50px] left-[20px] sm:w-[70%] w-[80%] ">
                     <figure>
-                        <img className="sm:w-[80%] w-[70%] " src={movieTitle} alt="error" />
+                        <img className="sm:w-[50vh] w-[16vh] " src={movieTitle} alt="error" />
                     </figure>
-                    <div className="font-poppins font-bold text-white sm:text-[18px] text-[9px] sm:py-[20px] py-[2px] ">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta consequuntur</h1>
+                    <div className="font-poppins font-bold text-white sm:text-[18px] text-[6px] sm:py-[20px] py-[2px] ">
+                        <h1 className='text-shadow-md'>{movie ? movie.overview : ''}</h1>
                     </div>
                     <div className="flex sm:gap-[20px] gap-[5px]">
                         <button className="flex font-poppins font-bold sm:text-[18px] text-[8px] bg-white hover:bg-[#ccc] sm:w-[125px] w-[50px] sm:h-[50px] h-[20px] items-center justify-center rounded-md "> <FaPlay className="sm:text-[23px] text-[12px] sm:mr-[10px] mr-[5px] " /> <span>Play</span> </button>

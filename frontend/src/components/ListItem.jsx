@@ -8,7 +8,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import { GoDotFill } from 'react-icons/go';
 import movietrailer from '../images/movietrailer.mp4'
 
-const ListItem = ({ index }) => {
+const ListItem = ({ index , type }) => {
 
     const isMobile = window.innerWidth <= 640
 
@@ -31,13 +31,91 @@ const ListItem = ({ index }) => {
       setishovered(false);
     };
 
+    const [movie,setmovie] = useState('')
+
+    const gettrending = async () => {
+        let url = await fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+            }    
+        })
+        url = await url.json()
+        setmovie(url.results[index])
+    }
+    const getpopulartvshows = async () => {
+        let url = await fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+            }    
+        })
+        url = await url.json()
+        setmovie(url.results[index])
+    }
+    const gettopratedtvshows = async () => {
+        let url = await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1', {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+            }    
+        })
+        url = await url.json()
+        setmovie(url.results[index])
+    }
+    const getpopularmovies = async () => {
+        let url = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+            }    
+        })
+        url = await url.json()
+        setmovie(url.results[index])
+    }
+    const gettopratedmovies = async () => {
+        let url = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+            }    
+        })
+        url = await url.json()
+        setmovie(url.results[index])
+    }
+
+    useEffect(() => {
+
+        const fetchDataBasedOnType = async (type) => {
+            if (type === 'Trending') {
+                await gettrending();
+            } else if (type === 'Popular TV Shows') {
+                await getpopulartvshows();
+            } else if (type === 'Top Rated TV Shows') {
+                await gettopratedtvshows();
+            } else if (type === 'Popular Movies') {
+                await getpopularmovies();
+            } else if (type === 'Top Rated Movies') {
+                await gettopratedmovies();
+            }
+        };
+        
+        fetchDataBasedOnType(type);
+
+    })
+
     return (
         <div style={{ left: ishovered && index * 225 - 50 + index * 2.5 + 50 }} className={`${
             ishovered && !isMobile
               ? ` w-[325px] h-[325px] absolute -top-[110px] shadow-[#393939] shadow-lg`
               : ''
           } w-[225px] h-[125px] rounded-md bg-[rgb(18,18,18)] overflow-hidden cursor-pointer text-white`}   onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
-            <img className='w-[100%] object-cover ' src={movieposter} alt="error" />
+            <img className='w-[100%] object-cover ' src={movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : ''} alt="error" />
             {ishovered && !isMobile && (
                 <>
                     <video className=' w-[100%] object-cover -mt-[183px] ' autoPlay muted loop>

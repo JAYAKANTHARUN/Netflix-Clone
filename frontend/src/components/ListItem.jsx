@@ -38,7 +38,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+                Authorization: `${process.env.AUTH}`
             }    
         })
         url = await url.json()
@@ -49,7 +49,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+                Authorization: `${process.env.AUTH}`
             }    
         })
         url = await url.json()
@@ -60,7 +60,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+                Authorization: `${process.env.AUTH}`
             }    
         })
         url = await url.json()
@@ -71,7 +71,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+                Authorization: `${process.env.AUTH}`
             }    
         })
         url = await url.json()
@@ -82,7 +82,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+                Authorization: `${process.env.AUTH}`
             }    
         })
         url = await url.json()
@@ -107,7 +107,7 @@ const ListItem = ({ index , type }) => {
         
         fetchDataBasedOnType(type);
 
-    })
+    },[])
 
     return (
         <div style={{ left: ishovered && index * 225 - 50 + index * 2.5 + 50 }} className={`${

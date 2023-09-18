@@ -13,7 +13,7 @@ const Featured = ({ type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`
+                Authorization: `${process.env.AUTH}` 
             }
         })
         url = await url.json()

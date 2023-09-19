@@ -38,7 +38,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `${process.env.AUTH}`
+                Authorization: `${process.env.REACT_APP_AUTH}`
             }    
         })
         url = await url.json()
@@ -49,7 +49,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `${process.env.AUTH}`
+                Authorization: `${process.env.REACT_APP_AUTH}`
             }    
         })
         url = await url.json()
@@ -60,7 +60,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `${process.env.AUTH}`
+                Authorization: `${process.env.REACT_APP_AUTH}`
             }    
         })
         url = await url.json()
@@ -71,7 +71,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `${process.env.AUTH}`
+                Authorization: `${process.env.REACT_APP_AUTH}`
             }    
         })
         url = await url.json()
@@ -82,7 +82,7 @@ const ListItem = ({ index , type }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `${process.env.AUTH}`
+                Authorization: `${process.env.REACT_APP_AUTH}`
             }    
         })
         url = await url.json()

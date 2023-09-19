@@ -2,35 +2,47 @@ import React, { useEffect, useState } from 'react'
 import movieImage from '../images/movieimage.webp'
 import movieTitle from '../images/movietitle.webp'
 import { FaPlay } from 'react-icons/fa';
-import { BiInfoCircle } from 'react-icons/bi';
+import { BiInfoCircle } from 'react-icons/bi'; 
 
 const Featured = ({ type }) => {
 
     const [movie, setmovie] = useState('')
+    const [movietitle, setmovietitle] = useState('')
 
     const getmovie = async () => {
-        let url = await fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', {
+        let url = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `${process.env.AUTH}` 
+                Authorization: `${process.env.REACT_APP_AUTH}`
             }
         })
         url = await url.json()
         const randomIndex = Math.floor(Math.random() * 20) + 1;
-        console.log(url.results[randomIndex])
-        setmovie(url.results[randomIndex])
+        const selectedmovie = url.results[randomIndex]
+
+        let title = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/images`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `${process.env.REACT_APP_AUTH}`
+            }
+        })
+        title = await title.json()
+        const selectedtitle = title.logos[0].file_path
+
+        setmovie(selectedmovie)
+        setmovietitle(selectedtitle)
     }
 
     useEffect(() => {
-
-        const fetchdata = async() => {
+        const fetchdata = async () => {
             await getmovie()
         }
         
         fetchdata()
 
-    }, [])
+    }, [])  
 
     return (
         <div>
@@ -62,7 +74,7 @@ const Featured = ({ type }) => {
                 </figure>
                 <div className="absolute sm:top-[35%] top-[30%] sm:left-[50px] left-[20px] sm:w-[70%] w-[80%] ">
                     <figure>
-                        <img className="sm:w-[50vh] w-[16vh] " src={movieTitle} alt="error" />
+                        <img className="sm:h-[20vh] w-auto h-[8vh] " src={movie ? `https://image.tmdb.org/t/p/original${movietitle}` : { movieTitle }} alt="error" />
                     </figure>
                     <div className="font-poppins font-bold text-white sm:text-[18px] text-[6px] sm:py-[20px] py-[2px] ">
                         <h1 className='text-shadow-md'>{movie ? movie.overview : ''}</h1>

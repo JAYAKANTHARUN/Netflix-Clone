@@ -25,10 +25,11 @@ const Home = () => {
                 <Nav />
                 <Featured />
                 <List type={'Trending'} />
-                <List type={'Popular TV Shows'} />
-                <List type={'Top Rated TV Shows'} />
-                <List type={'Popular Movies'} />
-                <List type={'Top Rated Movies'} />
+                <List type={'Now Playing'} />
+                <List type={'Popular'} />
+                <List type={'Top Rated'} />
+                <List type={'Upcoming'} />
+                
             </section>
         </div>
     )

@@ -29,7 +29,7 @@ const Home = () => {
                 <List type={'Popular'} />
                 <List type={'Top Rated'} />
                 <List type={'Upcoming'} />
-                
+                <div className="bg-black h-[200px]"></div>
             </section>
         </div>
     )

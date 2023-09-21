@@ -37,6 +37,7 @@ const ListItem = ({ index, type }) => {
 
     const [movie, setmovie] = useState('')
     const [movievideo, setmovievideo] = useState('')
+    const [voteavg,setvoteavg] = useState(0)
 
     const gettrending = async () => {
         let url = await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', {
@@ -48,6 +49,7 @@ const ListItem = ({ index, type }) => {
         })
         url = await url.json()
         const selectedmovie = url.results[index]
+        const selectedvoteavg = url.results[index].vote_average
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -61,6 +63,7 @@ const ListItem = ({ index, type }) => {
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
+        setvoteavg(selectedvoteavg)
     }
     const getpopular = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
@@ -72,6 +75,7 @@ const ListItem = ({ index, type }) => {
         })
         url = await url.json()
         const selectedmovie = url.results[index]
+        const selectedvoteavg = url.results[index].vote_average
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -85,6 +89,7 @@ const ListItem = ({ index, type }) => {
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
+        setvoteavg(selectedvoteavg)
     }
     const gettoprated = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', {
@@ -96,6 +101,7 @@ const ListItem = ({ index, type }) => {
         })
         url = await url.json()
         const selectedmovie = url.results[index]
+        const selectedvoteavg = url.results[index].vote_average
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -109,6 +115,8 @@ const ListItem = ({ index, type }) => {
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
+        setvoteavg(selectedvoteavg)
+
     }
     const getnowplaying = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', {
@@ -120,6 +128,7 @@ const ListItem = ({ index, type }) => {
         })
         url = await url.json()
         const selectedmovie = url.results[index]
+        const selectedvoteavg = url.results[index].vote_average
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -133,6 +142,7 @@ const ListItem = ({ index, type }) => {
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
+        setvoteavg(selectedvoteavg)
     }
     const getupcoming = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
@@ -144,6 +154,7 @@ const ListItem = ({ index, type }) => {
         })
         url = await url.json()
         const selectedmovie = url.results[index]
+        const selectedvoteavg = url.results[index].vote_average
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -157,6 +168,7 @@ const ListItem = ({ index, type }) => {
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
+        setvoteavg(selectedvoteavg)
     }
 
     const handleplay = () => {
@@ -218,7 +230,7 @@ const ListItem = ({ index, type }) => {
                             </div>
                         </div>
                         <div className='flex mt-[15px] mb-[5px] gap-[15px] items-center '>
-                            <h1 className='text-green-600 font-poppins font-bold'>95% Match</h1>
+                            <h1 className='text-green-600 font-poppins font-bold'>{movie ? Math.floor(voteavg*10) : '96'}% match</h1>
                             <h1 className='font-poppins font-bold text-[#ccc] border-white border-[1px] p-[2px] '>+16</h1>
                             <h1 className='font-poppins font-bold text-[#ccc] '>1h 40m</h1>
                         </div>

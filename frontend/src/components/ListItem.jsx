@@ -9,8 +9,10 @@ import { GoDotFill } from 'react-icons/go';
 import movietrailer from '../images/movietrailer.mp4'
 
 import YouTube from 'react-youtube';
+import { useNavigate } from 'react-router-dom';
 
 const ListItem = ({ index, type }) => {
+    const navigate = useNavigate()
 
     const isMobile = window.innerWidth <= 640
 
@@ -157,6 +159,10 @@ const ListItem = ({ index, type }) => {
         setmovievideo(selectedvideo)
     }
 
+    const handleplay = () => {
+        navigate(`/watch?key=${movievideo}`)
+    }
+
     useEffect(() => {
 
         const fetchDataBasedOnType = async (type) => {
@@ -202,7 +208,7 @@ const ListItem = ({ index, type }) => {
                     <div className='px-[20px] py-[10px] '>
                         <div className='flex justify-between items-center transition duration-3000 ease-in-out '>
                             <div className='flex gap-[15px] '>
-                                <button className=' text-black hover:bg-[#ccc] text-[20px] bg-white rounded-full w-[40px] h-[40px] transition duration-3000 ease-in-out'><FaPlay className='m-auto mr-[8px]' /></button>
+                                <button onClick={handleplay} className=' text-black hover:bg-[#ccc] text-[20px] bg-white rounded-full w-[40px] h-[40px] transition duration-3000 ease-in-out'><FaPlay className='m-auto mr-[8px]' /></button>
                                 <button className=' text-white text-[30px] bg-[rgb(37,37,37)] hover:bg-[rgb(60,60,60)] transition duration-3000 ease-in-out border-[#7c7c7c] hover:border-white border-[1px] rounded-full w-[40px] h-[40px]'><BiPlus className='m-auto' /></button>
                                 <button className=' text-white text-[25px] bg-[rgb(37,37,37)] hover:bg-[rgb(60,60,60)] rounded-full w-[40px] h-[40px] transition duration-3000 ease-in-out border-[#7c7c7c] hover:border-white border-[1px]'><BiLike className='m-auto' /></button>
                                 <button className=' text-white text-[25px] bg-[rgb(37,37,37)] hover:bg-[rgb(60,60,60)] rounded-full w-[40px] h-[40px] transition duration-3000 ease-in-out border-[#7c7c7c] hover:border-white border-[1px]'><BiDislike className='m-auto' /></button>

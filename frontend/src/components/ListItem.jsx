@@ -7,6 +7,7 @@ import { BiPlus } from 'react-icons/bi';
 import { BsChevronDown } from 'react-icons/bs';
 import { GoDotFill } from 'react-icons/go';
 import movietrailer from '../images/movietrailer.mp4'
+import movietrailer1 from '../images/movietrailer1.mp4'
 
 import YouTube from 'react-youtube';
 import { useNavigate } from 'react-router-dom';
@@ -37,8 +38,9 @@ const ListItem = ({ index, type }) => {
 
     const [movie, setmovie] = useState('')
     const [movievideo, setmovievideo] = useState('')
-    const [voteavg,setvoteavg] = useState(0)
-    const [duration,setduration] = useState(0)
+    const [voteavg, setvoteavg] = useState(0)
+    const [duration, setduration] = useState(0)
+    const [genres, setgenres] = useState([])
 
     const gettrending = async () => {
         let url = await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', {
@@ -71,11 +73,13 @@ const ListItem = ({ index, type }) => {
         })
         details = await details.json()
         const selectedduration = details.runtime
+        const selectedgenres = details.genres
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
+        setgenres(selectedgenres)
     }
     const getpopular = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
@@ -108,11 +112,13 @@ const ListItem = ({ index, type }) => {
         })
         details = await details.json()
         const selectedduration = details.runtime
+        const selectedgenres = details.genres
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
+        setgenres(selectedgenres)
     }
     const gettoprated = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', {
@@ -145,12 +151,13 @@ const ListItem = ({ index, type }) => {
         })
         details = await details.json()
         const selectedduration = details.runtime
+        const selectedgenres = details.genres
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
-
+        setgenres(selectedgenres)
     }
     const getnowplaying = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', {
@@ -183,11 +190,13 @@ const ListItem = ({ index, type }) => {
         })
         details = await details.json()
         const selectedduration = details.runtime
+        const selectedgenres = details.genres
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
+        setgenres(selectedgenres)
     }
     const getupcoming = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
@@ -220,11 +229,13 @@ const ListItem = ({ index, type }) => {
         })
         details = await details.json()
         const selectedduration = details.runtime
+        const selectedgenres = details.genres
 
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
+        setgenres(selectedgenres)
     }
 
     const handleplay = () => {
@@ -267,12 +278,18 @@ const ListItem = ({ index, type }) => {
             ? ` w-[325px] h-[325px] absolute -top-[110px] shadow-[#393939] shadow-lg`
             : ''
             } w-[225px] h-[125px] rounded-md bg-[rgb(18,18,18)] overflow-hidden cursor-pointer text-white`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
-            <img className='w-[100%] object-cover ' src={movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : ''} alt="error" />
+            <img className='w-[100%] object-cover ' src={movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : movieposter} alt="error" />
             {ishovered && !isMobile && (
                 <>
-                    <div className=' w-[100%] object-cover -mt-[183px] ' >
-                        <YouTube videoId={movievideo} opts={opts} />
-                    </div>
+                    {movie ? (
+                        <div className='w-[100%] object-cover -mt-[183px]'>
+                            <YouTube videoId={movievideo} opts={opts} />
+                        </div>
+                    ) : (
+                        <video className='w-[100%] object-cover -mt-[183px]' autoPlay muted loop>
+                            <source src={movietrailer1} />
+                        </video>
+                    )}
                     <div className='px-[20px] py-[10px] '>
                         <div className='flex justify-between items-center transition duration-3000 ease-in-out '>
                             <div className='flex gap-[15px] '>
@@ -286,13 +303,24 @@ const ListItem = ({ index, type }) => {
                             </div>
                         </div>
                         <div className='flex mt-[15px] mb-[5px] gap-[15px] items-center '>
-                            <h1 className='text-green-600 font-poppins font-bold'>{movie ? Math.floor(voteavg*10) : '96'}% match</h1>
+                            <h1 className='text-green-600 font-poppins font-bold'>{movie ? Math.floor(voteavg * 10) : '96'}% match</h1>
                             <h1 className='font-poppins font-bold text-[#ccc] border-white border-[1px] p-[2px] '>+16</h1>
-                            <h1 className='font-poppins font-bold text-[#ccc] '>{movie ? Math.floor(duration/60) : '1'}h {movie ? duration%60 : '40'}m</h1>
+                            <h1 className='font-poppins font-bold text-[#ccc] '>{movie ? Math.floor(duration / 60) : '1'}h {movie ? duration % 60 : '40'}m</h1>
                         </div>
-                        <div className='flex gap-[5px] text-[14px] items-center text-white font-poppins font-bold mt-[10px] mb-[5px]'>
-                            Rousing <GoDotFill className='text-[#ccc]' /> Adventure <GoDotFill className='text-[#ccc]' /> Visual Striking
-                        </div>
+                        {movie ? (
+                            <div className='flex gap-[5px] text-[14px] items-center text-white font-poppins font-bold mt-[10px] mb-[5px]'>
+                                {genres.map((genre, index) => (
+                                    <React.Fragment key={genre.id}>
+                                        {genre.name}
+                                        {index < genres.length - 1 && <GoDotFill className='text-[#ccc]' />}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className='flex gap-[5px] text-[14px] items-center text-white font-poppins font-bold mt-[10px] mb-[5px]'>
+                                Rousing <GoDotFill className='text-[#ccc]' /> Adventure <GoDotFill className='text-[#ccc]' /> Visual Striking
+                            </div>
+                        )}
                     </div>
                 </>
             )}

@@ -38,6 +38,7 @@ const ListItem = ({ index, type }) => {
     const [movie, setmovie] = useState('')
     const [movievideo, setmovievideo] = useState('')
     const [voteavg,setvoteavg] = useState(0)
+    const [duration,setduration] = useState(0)
 
     const gettrending = async () => {
         let url = await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', {
@@ -61,9 +62,20 @@ const ListItem = ({ index, type }) => {
         video = await video.json()
         const selectedvideo = video.results[0].key
 
+        let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `${process.env.REACT_APP_AUTH}`
+            }
+        })
+        details = await details.json()
+        const selectedduration = details.runtime
+
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
+        setduration(selectedduration)
     }
     const getpopular = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
@@ -87,9 +99,20 @@ const ListItem = ({ index, type }) => {
         video = await video.json()
         const selectedvideo = video.results[0].key
 
+        let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `${process.env.REACT_APP_AUTH}`
+            }
+        })
+        details = await details.json()
+        const selectedduration = details.runtime
+
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
+        setduration(selectedduration)
     }
     const gettoprated = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', {
@@ -113,9 +136,20 @@ const ListItem = ({ index, type }) => {
         video = await video.json()
         const selectedvideo = video.results[0].key
 
+        let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `${process.env.REACT_APP_AUTH}`
+            }
+        })
+        details = await details.json()
+        const selectedduration = details.runtime
+
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
+        setduration(selectedduration)
 
     }
     const getnowplaying = async () => {
@@ -140,9 +174,20 @@ const ListItem = ({ index, type }) => {
         video = await video.json()
         const selectedvideo = video.results[0].key
 
+        let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `${process.env.REACT_APP_AUTH}`
+            }
+        })
+        details = await details.json()
+        const selectedduration = details.runtime
+
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
+        setduration(selectedduration)
     }
     const getupcoming = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
@@ -166,9 +211,20 @@ const ListItem = ({ index, type }) => {
         video = await video.json()
         const selectedvideo = video.results[0].key
 
+        let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `${process.env.REACT_APP_AUTH}`
+            }
+        })
+        details = await details.json()
+        const selectedduration = details.runtime
+
         setmovie(selectedmovie)
         setmovievideo(selectedvideo)
         setvoteavg(selectedvoteavg)
+        setduration(selectedduration)
     }
 
     const handleplay = () => {
@@ -232,7 +288,7 @@ const ListItem = ({ index, type }) => {
                         <div className='flex mt-[15px] mb-[5px] gap-[15px] items-center '>
                             <h1 className='text-green-600 font-poppins font-bold'>{movie ? Math.floor(voteavg*10) : '96'}% match</h1>
                             <h1 className='font-poppins font-bold text-[#ccc] border-white border-[1px] p-[2px] '>+16</h1>
-                            <h1 className='font-poppins font-bold text-[#ccc] '>1h 40m</h1>
+                            <h1 className='font-poppins font-bold text-[#ccc] '>{movie ? Math.floor(duration/60) : '1'}h {movie ? duration%60 : '40'}m</h1>
                         </div>
                         <div className='flex gap-[5px] text-[14px] items-center text-white font-poppins font-bold mt-[10px] mb-[5px]'>
                             Rousing <GoDotFill className='text-[#ccc]' /> Adventure <GoDotFill className='text-[#ccc]' /> Visual Striking

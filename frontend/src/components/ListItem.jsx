@@ -62,7 +62,14 @@ const ListItem = ({ index, type }) => {
             }
         })
         video = await video.json()
-        const selectedvideo = video.results[0].key
+
+        let selectedvideo = ''
+        if (video.results.length !== 0) {
+            selectedvideo = video.results[0].key
+        }
+        else {
+            selectedvideo = 'Ades3pQbeh8'
+        }
 
         let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
             method: 'GET',
@@ -101,7 +108,14 @@ const ListItem = ({ index, type }) => {
             }
         })
         video = await video.json()
-        const selectedvideo = video.results[0].key
+
+        let selectedvideo = ''
+        if (video.results.length !== 0) {
+            selectedvideo = video.results[0].key
+        }
+        else {
+            selectedvideo = 'Ades3pQbeh8'
+        }
 
         let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
             method: 'GET',
@@ -140,7 +154,14 @@ const ListItem = ({ index, type }) => {
             }
         })
         video = await video.json()
-        const selectedvideo = video.results[0].key
+        
+        let selectedvideo = ''
+        if (video.results.length !== 0) {
+            selectedvideo = video.results[0].key
+        }
+        else {
+            selectedvideo = 'Ades3pQbeh8'
+        }
 
         let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
             method: 'GET',
@@ -179,7 +200,14 @@ const ListItem = ({ index, type }) => {
             }
         })
         video = await video.json()
-        const selectedvideo = video.results[0].key
+        
+        let selectedvideo = ''
+        if (video.results.length !== 0) {
+            selectedvideo = video.results[0].key
+        }
+        else {
+            selectedvideo = 'Ades3pQbeh8'
+        }
 
         let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
             method: 'GET',
@@ -218,7 +246,14 @@ const ListItem = ({ index, type }) => {
             }
         })
         video = await video.json()
-        const selectedvideo = video.results[0].key
+        
+        let selectedvideo = ''
+        if (video.results.length !== 0) {
+            selectedvideo = video.results[0].key
+        }
+        else {
+            selectedvideo = 'Ades3pQbeh8'
+        }
 
         let details = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}?language=en-US`, {
             method: 'GET',
@@ -278,18 +313,12 @@ const ListItem = ({ index, type }) => {
             ? ` w-[325px] h-[325px] absolute -top-[110px] shadow-[#393939] shadow-lg`
             : ''
             } w-[225px] h-[125px] rounded-md bg-[rgb(18,18,18)] overflow-hidden cursor-pointer text-white`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
-            <img className='w-[100%] object-cover ' src={movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : movieposter} alt="error" />
+            <img className='w-[100%] object-cover ' src={movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : ''} alt="error" />
             {ishovered && !isMobile && (
                 <>
-                    {movie ? (
-                        <div className='w-[100%] object-cover -mt-[183px]'>
-                            <YouTube videoId={movievideo} opts={opts} />
-                        </div>
-                    ) : (
-                        <video className='w-[100%] object-cover -mt-[183px]' autoPlay muted loop>
-                            <source src={movietrailer1} />
-                        </video>
-                    )}
+                    <div className='w-[100%] object-cover -mt-[183px]'>
+                        <YouTube videoId={movievideo} opts={opts} />
+                    </div>
                     <div className='px-[20px] py-[10px] '>
                         <div className='flex justify-between items-center transition duration-3000 ease-in-out '>
                             <div className='flex gap-[15px] '>

@@ -29,7 +29,14 @@ const Featured = ({ type }) => {
             }
         })
         title = await title.json()
-        const selectedtitle = title.logos[0].file_path
+
+        let selectedtitle = ''
+        if (title.logos.length !== 0) {
+            selectedtitle = title.logos[0].file_path
+        }
+        else {
+            selectedtitle = '/jF5NGickP6QQC40Nu2XJCxECs6C.png'
+        }
 
         setmovie(selectedmovie)
         setmovietitle(selectedtitle)

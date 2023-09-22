@@ -41,6 +41,7 @@ const ListItem = ({ index, type }) => {
     const [voteavg, setvoteavg] = useState(0)
     const [duration, setduration] = useState(0)
     const [genres, setgenres] = useState([])
+    const [adult,setadult] = useState(false)
 
     const gettrending = async () => {
         let url = await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', {
@@ -53,6 +54,7 @@ const ListItem = ({ index, type }) => {
         url = await url.json()
         const selectedmovie = url.results[index]
         const selectedvoteavg = url.results[index].vote_average
+        const selectedadult = url.results[index].adult
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -87,6 +89,7 @@ const ListItem = ({ index, type }) => {
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
         setgenres(selectedgenres)
+        setadult(selectedadult)
     }
     const getpopular = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
@@ -99,6 +102,7 @@ const ListItem = ({ index, type }) => {
         url = await url.json()
         const selectedmovie = url.results[index]
         const selectedvoteavg = url.results[index].vote_average
+        const selectedadult = url.results[index].adult
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -133,6 +137,7 @@ const ListItem = ({ index, type }) => {
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
         setgenres(selectedgenres)
+        setadult(selectedadult)
     }
     const gettoprated = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', {
@@ -145,6 +150,7 @@ const ListItem = ({ index, type }) => {
         url = await url.json()
         const selectedmovie = url.results[index]
         const selectedvoteavg = url.results[index].vote_average
+        const selectedadult = url.results[index].adult
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -179,6 +185,7 @@ const ListItem = ({ index, type }) => {
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
         setgenres(selectedgenres)
+        setadult(selectedadult)
     }
     const getnowplaying = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', {
@@ -191,6 +198,7 @@ const ListItem = ({ index, type }) => {
         url = await url.json()
         const selectedmovie = url.results[index]
         const selectedvoteavg = url.results[index].vote_average
+        const selectedadult = url.results[index].adult
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -225,6 +233,7 @@ const ListItem = ({ index, type }) => {
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
         setgenres(selectedgenres)
+        setadult(selectedadult)
     }
     const getupcoming = async () => {
         let url = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
@@ -237,6 +246,7 @@ const ListItem = ({ index, type }) => {
         url = await url.json()
         const selectedmovie = url.results[index]
         const selectedvoteavg = url.results[index].vote_average
+        const selectedadult = url.results[index].adult
 
         let video = await fetch(`https://api.themoviedb.org/3/movie/${selectedmovie.id}/videos?language=en-US`, {
             method: 'GET',
@@ -271,6 +281,7 @@ const ListItem = ({ index, type }) => {
         setvoteavg(selectedvoteavg)
         setduration(selectedduration)
         setgenres(selectedgenres)
+        setadult(selectedadult)
     }
 
     const handleplay = () => {
@@ -333,7 +344,10 @@ const ListItem = ({ index, type }) => {
                         </div>
                         <div className='flex mt-[15px] mb-[5px] gap-[15px] items-center '>
                             <h1 className='text-green-600 font-poppins font-bold'>{movie ? Math.floor(voteavg * 10) : '96'}% match</h1>
-                            <h1 className='font-poppins font-bold text-[#ccc] border-white border-[1px] p-[2px] '>+16</h1>
+                            {
+                                adult===false ? (<h1 className='font-poppins font-bold text-[#ccc] border-white border-[1px] p-[2px] px-[5px] '>U/A +16</h1>) : (<h1 className='font-poppins font-bold text-[#ccc] border-white border-[1px] p-[2px] px-[8px] '>A</h1>)
+                            }
+                            
                             <h1 className='font-poppins font-bold text-[#ccc] '>{movie ? Math.floor(duration / 60) : '1'}h {movie ? duration % 60 : '40'}m</h1>
                         </div>
                         {movie ? (

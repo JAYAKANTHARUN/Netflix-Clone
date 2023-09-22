@@ -42,8 +42,8 @@ app.post('/payment', verifytoken ,async(req,res)=>{
                 quantity : item.quantity
             }
         }),
-        success_url : `http://127.0.0.1:3000/success?email=${items[0].email}&plan=${items[0].plan}`,
-        cancel_url : `http://127.0.0.1:3000/step21`
+        success_url : `https://netflix-a83h.onrender.com/success?email=${items[0].email}&plan=${items[0].plan}`,
+        cancel_url : `https://netflix-a83h.onrender.com/step21`
            
     })
     if (session){

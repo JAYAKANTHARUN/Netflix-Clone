@@ -20,7 +20,7 @@ const Step12 = () => {
     const navigate = useNavigate()
 
     const handlestep12 = async() => {
-        let result = await fetch('http://127.0.0.1:4000/register', {
+        let result = await fetch('https://netflix-a83h.onrender.com/register', {
             method: 'post',
             body: JSON.stringify({ email, password , subscription , plan }),
             headers: {

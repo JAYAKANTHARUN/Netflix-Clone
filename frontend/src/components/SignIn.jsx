@@ -54,7 +54,7 @@ const SignIn = () => {
     }
 
     const handlesignin = async() => {
-        let result = await fetch('http://127.0.0.1:4000/login', {
+        let result = await fetch('https://netflix-a83h.onrender.com/login', {
             method: 'post',
             body: JSON.stringify({ email, password }),
             headers: {

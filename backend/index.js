@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-require('./db/config')
+require('./db/config') 
 
 const Users = require('./db/Users')
 

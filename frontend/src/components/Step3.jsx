@@ -28,7 +28,7 @@ const Step3 = () => {
 
     const handlestep3 = async () => {
 
-        let result = await fetch('https://netflix-a83h.onrender.com/payment',{
+        let result = await fetch('https://jknetflix.onrender.com/payment',{
             method:'post',
             body: JSON.stringify({
                 items:[

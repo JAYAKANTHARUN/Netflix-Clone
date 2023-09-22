@@ -42,8 +42,8 @@ app.post('/payment', verifytoken ,async(req,res)=>{
                 quantity : item.quantity
             }
         }),
-        success_url : `https://netflix-a83h.onrender.com/success?email=${items[0].email}&plan=${items[0].plan}`,
-        cancel_url : `https://netflix-a83h.onrender.com/step21`
+        success_url : `https://jknetflix.vercel.app/success?email=${items[0].email}&plan=${items[0].plan}`,
+        cancel_url : `https://jknetflix.vercel.app/step21`
            
     })
     if (session){

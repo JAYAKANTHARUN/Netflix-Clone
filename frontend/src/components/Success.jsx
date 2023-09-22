@@ -32,7 +32,7 @@ function Success() {
         navigate('/home')
     }
     const handleplan = async () => {
-        let result = await fetch('https://netflix-a83h.onrender.com/update', {
+        let result = await fetch('https://jknetflix.onrender.com/update', {
             method: 'post',
             body: JSON.stringify({ email, plan }),
             headers: {

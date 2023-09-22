@@ -20,7 +20,7 @@ const Step12 = () => {
     const navigate = useNavigate()
 
     const handlestep12 = async() => {
-        let result = await fetch('https://netflix-a83h.onrender.com/register', {
+        let result = await fetch('https://jknetflix.onrender.com/register', {
             method: 'post',
             body: JSON.stringify({ email, password , subscription , plan }),
             headers: {
